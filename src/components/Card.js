@@ -1,11 +1,12 @@
 import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Card(props) {
     const {title , desc, img, price} = props
   return (
     <div className="col-3">
       <div className="card">
-        <img
+        <LazyLoadImage
           src={img}
           alt="img-3"
         />

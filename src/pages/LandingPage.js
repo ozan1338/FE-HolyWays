@@ -1,11 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
+import {LazyLoadImage} from "react-lazy-load-image-component";
+import Login from "../components/Login";
+import Register from "../components/Register";
 
 export default function LandingPage() {
+    const [openLogin, setOpenLogin] = useState(false);
+    const [openRegister, setOpenRegister] = useState(false);
   return (
     <div className="landing-page">
-      <Navbar />
+      <Navbar openModal={setOpenLogin} />
+      {openLogin ? <Login openLogin={setOpenLogin} openRegister={setOpenRegister} /> : null}
+      {openRegister ? <Register openLogin={setOpenLogin} openRegister={setOpenRegister} /> : null}
+      
       <div className="container">
         <div className="landing-page-header">
           <h1>
@@ -21,19 +29,19 @@ export default function LandingPage() {
             and scrambled it to make a type specimen book.
           </p>
 
-          <button>Donate Now</button>
+          <button onClick={()=>{setOpenLogin(true)}}>Donate Now</button>
         </div>
         <div className="landing-page-image">
-          <img
+          <LazyLoadImage
             src={process.env.PUBLIC_URL + "/assets/images/image-1.png"}
-            alt="img"
+            alt="LazyLoadImage"
           />
         </div>
       </div>
       <div className="landing-page-image-2">
-        <img
+        <LazyLoadImage
           src={process.env.PUBLIC_URL + "/assets/images/image-2.png"}
-          alt="img-2"
+          alt="LazyLoadImage-2"
         />
       </div>
       <div className="landing-page-header-2">
