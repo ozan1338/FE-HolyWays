@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,263 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+/* Basic styling */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: sans-serif;
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  background-color: #c42424;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+button{
+  cursor: pointer;
+}
+
+.navbar-brand{
+  margin-left: 20px;
+}
+
+.navbar-btn{
+  margin-right: 20px;
+}
+
+.btn-login{
+  border: none;
+  width: 100px;
+  height: 40px;
+  background-color: #c42424;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 19px;
+}
+
+.btn-register{
+  margin-left: 10px;
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+  color: #c42424;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 19px;
+  border: none;
+}
+
+.landing-page{
+  position: relative;
+}
+
+.container{
+  background-color: #c42424;
+  width: 100%;
+  height: 700px;
+  position: absolute;
+  
+}
+
+.landing-page-header{
+  position: absolute;
+  left: 100px;
+  top: 151px;
+  width: 717px;
+  height: 174px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 55px;
+  display: flex;
+  align-items: center;
+
+}
+
+.landing-page-description{
+  position: absolute;
+  width: 545px;
+  height: 200px;
+  left: 100px;
+  top: 361px;
+  color: #fff;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.landing-page-description button{
+  margin-top: 10px;
+  width: 177px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  color: #c42424;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 19px;
+
+}
+
+.landing-page-image img{
+  position: absolute;
+  width: 515px;
+  height: 640px;
+  left: 827px;
+  top: 151px;
+}
+
+.landing-page-image-2 img{
+  position: absolute;
+  width: 423px;
+  height: 659px;
+  left:25px;
+  top: 700px;
+}
+
+.landing-page-header-2{
+  position: absolute;
+  margin-top: 65px;
+  width: 717px;
+  height: 174px;
+  left: 540px;
+  top: 851px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 55px;
+  display: flex;
+  align-items: center;
+}
+
+.landing-page-description-2{
+  position: absolute;
+  width: 717px;
+  height: 175px;
+  left: 529px;
+  top: 1068px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  line-height: 25px;
+  color: #616161;
+}
+
+.landing-page-description-2-paragraph{
+  width: 314px;
+  height: 175px;
+}
+
+.landing-page-description-2-paragraph-2{
+  width: 357px;
+  height: 100px;
+}
+
+.landing-page-card{
+  position: absolute;
+  width: 100%;
+  height: 620px;
+  top: 1500px;
+  text-align: center;
+}
+
+.landing-page-card h1{
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 44px;
+  color: #c42424;
+}
+
+.row{
+  width: 100%;
+  height: 550px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.col-3{
+  width: calc(100% / 12 * 3);
+  margin-right: 15px;
+}
+
+
+
+.card{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card img{
+  width: 100%;
+  height: 100%;
+}
+
+.card h1{
+  width: 90%;
+  margin: 20px;
+  text-align: left;
+  font-size: 23px;
+  line-height: 28px;
+  color: #000;
+}
+
+.card p {
+  width: 90%;
+  margin: 20px;
+  font-size: 18px;
+  line-height: 25px;
+  color: #616161;
+}
+
+input[type='range']{
+  width: 90%;
+  margin: 0 20px;
+}
+
+.total{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.total p{
+  width: 120px;
+height: 19px;
+font-weight: 800;
+font-size: 14px;
+line-height: 19px;
+}
+
+.total button{
+  border: none;
+  width: 100px;
+  height: 40px;
+  background-color: #c42424;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 19px;
+  border-radius: 10px;
 }
