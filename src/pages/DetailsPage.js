@@ -1,5 +1,6 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import DonationList from "../components/DonationList";
 import Navbar from "../components/Navbar";
 
 export default function DetailsPage() {
@@ -33,6 +34,18 @@ export default function DetailsPage() {
           </p>
           <button className="btn-donate ">Donate</button>
         </div>
+      </div>
+      <div className="details-page-donation">
+        <div className="details-page-donation-header">
+          <h1>List Donation (200)</h1>
+        </div>
+          <div className="details-page-donation-list">
+              <div className="row row-donation">
+                  <DonationList name="Andi" day="saturday" date="12 April 2021" total="45.000" />
+                  <DonationList name="Jamal" day="saturday" date="12 April 2021" total="45.000" />
+                  <DonationList name="Udin" day="saturday" date="12 April 2021" total="45.000" />
+              </div>
+          </div>
       </div>
     </div>
   );

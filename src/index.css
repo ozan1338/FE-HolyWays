@@ -34,19 +34,27 @@ body {
   padding: 10px;
 }
 
-button{
+button {
   cursor: pointer;
+  border: none;
+  width: 100px;
+  height: 40px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 19px;
+  border-radius: 10px;
 }
 
-.navbar-brand{
+.navbar-brand {
   margin-left: 20px;
 }
 
-.navbar-btn{
+.navbar-btn {
   margin-right: 20px;
 }
 
-.btn-login{
+.btn-login {
   border: none;
   width: 100px;
   height: 40px;
@@ -57,7 +65,7 @@ button{
   line-height: 19px;
 }
 
-.btn-register{
+.btn-register {
   margin-left: 10px;
   border-radius: 10px;
   width: 100px;
@@ -69,19 +77,18 @@ button{
   border: none;
 }
 
-.landing-page{
+.landing-page {
   position: relative;
 }
 
-.container{
+.container {
   background-color: #c42424;
   width: 100%;
   height: 700px;
   position: absolute;
-  
 }
 
-.landing-page-header{
+.landing-page-header {
   position: absolute;
   left: 100px;
   top: 151px;
@@ -93,10 +100,9 @@ button{
   line-height: 55px;
   display: flex;
   align-items: center;
-
 }
 
-.landing-page-description{
+.landing-page-description {
   position: absolute;
   width: 545px;
   height: 200px;
@@ -111,7 +117,7 @@ button{
   justify-content: flex-start;
 }
 
-.landing-page-description button{
+.landing-page-description button {
   margin-top: 10px;
   width: 177px;
   height: 40px;
@@ -121,10 +127,9 @@ button{
   font-weight: 900;
   font-size: 14px;
   line-height: 19px;
-
 }
 
-.landing-page-image img{
+.landing-page-image img {
   position: absolute;
   width: 515px;
   height: 640px;
@@ -132,15 +137,15 @@ button{
   top: 151px;
 }
 
-.landing-page-image-2 img{
+.landing-page-image-2 img {
   position: absolute;
   width: 423px;
   height: 659px;
-  left:25px;
+  left: 25px;
   top: 700px;
 }
 
-.landing-page-header-2{
+.landing-page-header-2 {
   position: absolute;
   margin-top: 65px;
   width: 717px;
@@ -154,7 +159,7 @@ button{
   align-items: center;
 }
 
-.landing-page-description-2{
+.landing-page-description-2 {
   position: absolute;
   width: 717px;
   height: 175px;
@@ -168,17 +173,17 @@ button{
   color: #616161;
 }
 
-.landing-page-description-2-paragraph{
+.landing-page-description-2-paragraph {
   width: 314px;
   height: 175px;
 }
 
-.landing-page-description-2-paragraph-2{
+.landing-page-description-2-paragraph-2 {
   width: 357px;
   height: 100px;
 }
 
-.landing-page-card{
+.landing-page-card {
   position: absolute;
   width: 100%;
   height: 620px;
@@ -186,14 +191,14 @@ button{
   text-align: center;
 }
 
-.landing-page-card h1{
+.landing-page-card h1 {
   font-weight: bold;
   font-size: 36px;
   line-height: 44px;
   color: #c42424;
 }
 
-.row{
+.row {
   width: 100%;
   height: 550px;
   display: flex;
@@ -202,14 +207,12 @@ button{
   justify-content: center;
 }
 
-.col-3{
+.col-3 {
   width: calc(100% / 12 * 3);
   margin-right: 15px;
 }
 
-
-
-.card{
+.card {
   width: 100%;
   height: 100%;
   display: flex;
@@ -218,12 +221,12 @@ button{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card img{
+.card img {
   width: 100%;
   height: 100%;
 }
 
-.card h1{
+.card h1 {
   width: 90%;
   margin: 20px;
   text-align: left;
@@ -240,26 +243,26 @@ button{
   color: #616161;
 }
 
-input[type='range']{
+input[type="range"] {
   width: 90%;
   margin: 0 20px;
 }
 
-.total{
+.total {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 
-.total p{
+.total p {
   width: 120px;
-height: 19px;
-font-weight: 800;
-font-size: 14px;
-line-height: 19px;
+  height: 19px;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 19px;
 }
 
-.total button{
+.total button {
   border: none;
   width: 100px;
   height: 40px;
@@ -271,7 +274,7 @@ line-height: 19px;
   border-radius: 10px;
 }
 
-.modal{
+.modal {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -279,42 +282,43 @@ line-height: 19px;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-.modal-body{
+.modal-body {
   background-color: #fff;
   width: 30rem;
   height: auto;
   padding: 2rem;
   font-size: 1.4rem;
   border-radius: 10px;
-  animation: modalAnimate .5s linear;
+  animation: modalAnimate 0.5s linear;
 }
 
-@keyframes  modalAnimate{
-  0%{
+@keyframes modalAnimate {
+  0% {
     opacity: 0;
     transform: translateY(-10rem);
-  } 100%{
+  }
+  100% {
     opacity: 1;
-    transform: translateY(0)
+    transform: translateY(0);
   }
 }
 
-.form-heading{
+.form-heading {
   font-weight: bold;
   font-size: 30px;
   line-height: 44px;
   margin-bottom: 13px;
 }
 
-form input{
+form input {
   margin-bottom: 15px;
 }
 
-form input[type=text],input[type=password]{
-  border: 2px solid #BCBCBC;
+form input[type="text"],
+input[type="password"] {
+  border: 2px solid #bcbcbc;
   display: block;
   width: 100%;
   border-radius: 5px;
@@ -327,7 +331,7 @@ form input[type=text],input[type=password]{
   padding: 0 20px;
 }
 
-form button{
+form button {
   background-color: #c42424;
   color: #fff;
   width: 100%;
@@ -339,100 +343,110 @@ form button{
   line-height: 22px;
 }
 
-form .form-link{
+form .form-link {
   margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-form span{
+form span {
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
   color: #333;
 }
 
-span strong{
+span strong {
   color: #333;
   cursor: pointer;
 }
 
-.details-page{
+.details-page,
+.details-page-donation,
+.user-page {
   display: flex;
   justify-content: center;
 }
 
-.details-page-image img, .details-page-description{
+.details-page-donation {
+  margin-top: 60px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details-page-image img,
+.details-page-description {
   margin-top: 50px;
   width: 500px;
   height: 500px;
 }
 
-.details-page-description{
+.details-page-description {
   margin-left: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.details-page-description h1{
+.details-page-description h1 {
   font-weight: bold;
   font-size: 36px;
   line-height: 44px;
   text-align: center;
 }
 
-.details-page-description strong{
+.details-page-description strong {
   font-weight: bold;
   font-size: 18px;
   line-height: 22px;
 }
 
-.details-page-description p{
+.details-page-description p {
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
   color: #616161;
 }
 
-.details-page-description input[type=range]{
+.details-page-description input[type="range"] {
   width: 85%;
 }
 
-.details-page-info .strong-red {
+.strong-red {
   color: #c42424;
 }
 
-.details-page-info, .details-page-info-2{
+.details-page-info,
+.details-page-info-2 {
   margin: 10px 0;
   display: flex;
 }
 
-.details-page-info{
+.details-page-info {
   width: 100%;
   justify-content: space-evenly;
 }
 
-.details-page-info-2{
+.details-page-info-2 {
   width: 82%;
   justify-content: space-between;
 }
 
-.details-page-info-2 strong{
+.details-page-info-2 strong {
   color: #000;
   font-size: 18px;
   line-height: 22px;
 }
 
-.details-page-description .description{
+.details-page-description .description {
   width: 83%;
   margin: 10px 0;
   font-size: 18px;
   line-height: 25px;
 }
 
-.details-page-description button{
+.details-page-description button {
   margin: 10px;
   background-color: #c42424;
   width: 83%;
@@ -445,3 +459,141 @@ span strong{
   line-height: 25px;
 }
 
+.details-page-donation-header {
+  display: flex;
+  justify-content: flex-start;
+  width: 77%;
+}
+
+.details-page-donation-header h1 {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 44px;
+}
+
+.details-page-donation-list {
+  width: 77%;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.col-1 {
+  width: 100%;
+}
+
+.card-donation-list {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-donation-list h1 {
+  margin: 14px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 17px;
+}
+
+.card-donation-list strong {
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 12px;
+}
+
+.card-donation-list p {
+  font-size: 13px;
+  line-height: 12px;
+  margin: 10px 14px;
+}
+
+.card-donation-list-flex{
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-donation-list-flex button{
+  margin-right: 13px;
+  margin-bottom: 4px;
+  color: #00FF47;
+}
+
+.row-donation {
+  margin: 2px 0;
+  height: 400px;
+}
+
+.user-page {
+  justify-content: space-evenly;
+  margin-top: 60px;
+}
+
+.user-page h1 {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 44px;
+}
+
+.user-page-profile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.user-page-profile h1 {
+  margin-bottom: 13px;
+}
+
+.user-page-profile-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-page-profile-detail {
+  height: 100%;
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-page-profile-body img {
+  background-blend-mode: normal;
+  border-radius: 10px;
+}
+
+
+.user-page-profile-detail div{
+  margin: 0 0 23px 0;
+}
+
+.user-page-profile-detail h3 {
+  font-weight: bold;
+  line-height: 22px;
+  font-size: 18px;
+  color: #c42424;
+  margin-bottom: 15px;
+}
+
+.user-page-profile-detail h4 {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #616161;
+}
+
+.user-page-history-donation{
+  width: 50%;
+  height: 200px;
+}
+
+.user-page-history-donation .card-donation-list{
+  margin-top: 13px;
+  height: auto;
+}
+
+.user-page-history-donation .card-donation-list h1{
+  font-size: 18px;
+  line-height: 17px
+}
