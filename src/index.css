@@ -327,7 +327,7 @@ form input {
 }
 
 form input[type="text"],
-input[type="password"] {
+input[type="password"], textarea {
   border: 2px solid #bcbcbc;
   display: block;
   width: 100%;
@@ -634,4 +634,56 @@ span strong {
   font-weight: bold;
   font-size: 36px;
   line-height: 44px;
+}
+
+.form-fund-page{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-fund-page-form{
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  width: 1083px;
+}
+
+
+textarea{
+  resize: none;
+  padding: 10px 20px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 22px;
+  color: #616161;
+}
+
+.form-fund-page-form label{
+  cursor: pointer;
+  border: none;
+  width: 173px;
+  height: 35px;;
+  color: #fff;
+  background-color: #c42424;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 19px;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  padding: 6px;
+  margin-bottom: 10px;
+}
+
+input[type=file]{
+  display: none;
+}
+
+
+
+.form-fund-page-form textarea{
+  height: 237px;
 }
