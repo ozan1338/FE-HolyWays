@@ -700,3 +700,83 @@ input[type="file"] {
   line-height: 44px;
   margin-bottom: 15px;
 }
+
+.profile {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.profile img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navbar-img .menu {
+  position: absolute;
+  top: 85px;
+  right: 5px;
+  padding: 10px 20px;
+  background-color: #fff;
+  width: 200px;
+  box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: 0.5s;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 2px 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar-img .menu::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  right: 45px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  transform: rotate(45deg);
+}
+
+.navbar-img ul li {
+  list-style: none;
+  padding: 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.navbar-img ul li img {
+  max-width: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.navbar-img ul li:hover img{
+  opacity: 1;
+}
+
+.navbar-img ul li a, .navbar-img ul li p {
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 33px;
+}
+
+.navbar-img ul li p{
+  cursor: pointer;
+}
+
+.navbar-img ul li:hover a, .navbar-img ul li:hover p{
+  color: #c42424;
+}
