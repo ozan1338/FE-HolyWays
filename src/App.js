@@ -5,6 +5,7 @@ import DetailsPage from './pages/DetailsPage';
 import UserPage from './pages/UserPage';
 import RaiseFundPage from './pages/RaiseFundPage';
 import FormFund from './pages/FormFund';
+import ViewFund from './pages/ViewFund';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/user' component={UserPage} exact />
         <Route path='/raise-fund' component={RaiseFundPage} />
         <Route path='/form-fund' component={FormFund} />
+        <Route path='/view-fund' component={ViewFund} />
       </Switch>
     </Router>
   );

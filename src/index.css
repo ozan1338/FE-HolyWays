@@ -327,7 +327,8 @@ form input {
 }
 
 form input[type="text"],
-input[type="password"], textarea {
+input[type="password"],
+textarea {
   border: 2px solid #bcbcbc;
   display: block;
   width: 100%;
@@ -519,15 +520,15 @@ span strong {
   margin: 10px 14px;
 }
 
-.card-donation-list-flex{
+.card-donation-list-flex {
   display: flex;
   justify-content: space-between;
 }
 
-.card-donation-list-flex button{
+.card-donation-list-flex button {
   margin-right: 13px;
   margin-bottom: 4px;
-  color: #00FF47;
+  color: #00ff47;
 }
 
 .row-donation {
@@ -579,8 +580,7 @@ span strong {
   border-radius: 10px;
 }
 
-
-.user-page-profile-detail div{
+.user-page-profile-detail div {
   margin: 0 0 23px 0;
 }
 
@@ -599,22 +599,22 @@ span strong {
   color: #616161;
 }
 
-.user-page-history-donation{
+.user-page-history-donation {
   width: 50%;
   height: 200px;
 }
 
-.user-page-history-donation .card-donation-list{
+.user-page-history-donation .card-donation-list {
   margin-top: 13px;
   height: auto;
 }
 
-.user-page-history-donation .card-donation-list h1{
+.user-page-history-donation .card-donation-list h1 {
   font-size: 18px;
-  line-height: 17px
+  line-height: 17px;
 }
 
-.raise-fund-button button{
+.raise-fund-button button {
   background-color: #c42424;
   width: 150px;
   margin: 45px 15px;
@@ -626,30 +626,29 @@ span strong {
   width: 50%;
 }
 
-.col-2{
+.col-2 {
   width: 50%;
 }
 
-.raise-fund-body h1{
+.raise-fund-body h1 {
   font-weight: bold;
   font-size: 36px;
   line-height: 44px;
 }
 
-.form-fund-page{
+.form-fund-page {
   display: flex;
   flex-direction: column;
 }
 
-.form-fund-page-form{
+.form-fund-page-form {
   display: flex;
   flex-direction: column;
   margin-top: 25px;
   width: 1083px;
 }
 
-
-textarea{
+textarea {
   resize: none;
   padding: 10px 20px;
   font-style: normal;
@@ -659,11 +658,11 @@ textarea{
   color: #616161;
 }
 
-.form-fund-page-form label{
+.form-fund-page-form label {
   cursor: pointer;
   border: none;
   width: 173px;
-  height: 35px;;
+  height: 35px;
   color: #fff;
   background-color: #c42424;
   font-size: 14px;
@@ -678,12 +677,26 @@ textarea{
   margin-bottom: 10px;
 }
 
-input[type=file]{
+input[type="file"] {
   display: none;
 }
 
-
-
-.form-fund-page-form textarea{
+.form-fund-page-form textarea {
   height: 237px;
+}
+
+.details-page-donation-list .load-mode {
+  text-align: center;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  color: #616161;
+  margin: 13px;
+}
+
+.details-page-donation-list-header {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 44px;
+  margin-bottom: 15px;
 }

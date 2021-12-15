@@ -1,9 +1,9 @@
 import React from "react";
 import DetailsDonate from "../components/DetailsDonate";
-import DonationList from "../components/DonationList";
 import Navbar from "../components/Navbar";
+import DonationList from "../components/DonationList";
 
-export default function DetailsPage() {
+export default function ViewFund() {
   return (
     <div>
       <Navbar />
@@ -41,6 +41,31 @@ export default function DetailsPage() {
               total="45.000"
             />
           </div>
+          <p className="load-mode">Load Mode</p>
+          <h1 className="details-page-donation-list-header">
+            Donation has not been approved(10)
+          </h1>
+          <div className="row row-donation">
+            <DonationList
+              name="Zain"
+              day="saturday"
+              date="12 April 2021"
+              total="45.000"
+            />
+            <DonationList
+              name="Fadhil"
+              day="saturday"
+              date="12 April 2021"
+              total="45.000"
+            />
+            <DonationList
+              name="Radif"
+              day="saturday"
+              date="12 April 2021"
+              total="45.000"
+            />
+          </div>
+          <p className="load-mode">Load Mode</p>
         </div>
       </div>
     </div>
