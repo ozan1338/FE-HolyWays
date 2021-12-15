@@ -2,9 +2,19 @@ import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Card(props) {
-    const {title , desc, img, price} = props
+    const {title , desc, img, price, column} = props;
+    let col;
+    if(column === 1){
+      col = 'col-1';
+    }else if( column === 2){
+      col = 'col-2';
+    }else if( column === 3){
+      col = 'col-3';
+    }else if( column === 4){
+      col = 'col-4';
+    }
   return (
-    <div className="col-3">
+    <div  className={col}>
       <div className="card">
         <LazyLoadImage
           src={img}

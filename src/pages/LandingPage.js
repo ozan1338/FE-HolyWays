@@ -72,6 +72,7 @@ export default function LandingPage() {
         <div className="row">
           
             <Card
+            column={4}
               title="The Strength of a People. Power of Community"
               desc="Lorem Ipsum is simply dummy text of the printing and typesetting
                     industry."
@@ -79,6 +80,7 @@ export default function LandingPage() {
               img={process.env.PUBLIC_URL + "/assets/images/image-3.png"}
             />
             <Card
+            column={4}
               title="Empowering Communities Ending Poverty"
               desc="Lorem Ipsum is simply dummy text of the printing and typesetting
                     industry."
@@ -86,6 +88,7 @@ export default function LandingPage() {
               img={process.env.PUBLIC_URL + "/assets/images/image-4.png"}
             />
             <Card
+            column={4}
               title="Please our brothers in flores"
               desc="Lorem Ipsum is simply dummy text of the printing and typesetting
                     industry."
