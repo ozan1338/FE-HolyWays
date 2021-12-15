@@ -10,7 +10,7 @@ export default function LandingPage() {
     const [openRegister, setOpenRegister] = useState(false);
   return (
     <div className="landing-page">
-      <Navbar openModal={setOpenLogin} />
+      <Navbar openLogin={setOpenLogin} openRegister={setOpenRegister} />
       {openLogin ? <Login openLogin={setOpenLogin} openRegister={setOpenRegister} /> : null}
       {openRegister ? <Register openLogin={setOpenLogin} openRegister={setOpenRegister} /> : null}
       
