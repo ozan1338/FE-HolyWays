@@ -731,6 +731,7 @@ input[type="file"] {
   border-radius: 15px;
   transition: 0.5s;
   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 2px 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 1;
 }
 
 .navbar-img .menu::before {
