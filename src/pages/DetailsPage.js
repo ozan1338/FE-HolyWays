@@ -2,11 +2,19 @@ import React from "react";
 import DetailsDonate from "../components/DetailsDonate";
 import DonationList from "../components/DonationList";
 import Navbar from "../components/Navbar";
+import Modal from "../components/Modal";
+import {useSelector} from "react-redux"
 
 export default function DetailsPage() {
+
+  const openState = useSelector(state=>state.modalReducer);
+
+  const { openModal } = openState;
+
   return (
     <div>
       <Navbar />
+      {openModal ? <Modal /> : null}
       <DetailsDonate
         img={process.env.PUBLIC_URL + "/assets/images/image-3.png"}
         title="The Strength of a People. Power of Community"

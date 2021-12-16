@@ -38,6 +38,8 @@ export default function UserPage() {
             date="12 April 2021"
             total="45.000"
             button="true"
+            titleButton="Finished"
+            buttonColor="green"
           />
         </div>
       </div>

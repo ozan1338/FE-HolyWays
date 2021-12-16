@@ -1,8 +1,12 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import {useDispatch} from "react-redux" 
 
 export default function DetailsDonate(props) {
-    const {img, title, gathered, goalGathered, totalDonation, dayLeft, description} = props
+    const {img, title, gathered, goalGathered, totalDonation, dayLeft, description} = props;
+
+    const dispatch = useDispatch();
+
   return (
     <div>
       <div className="details-page">
@@ -35,7 +39,7 @@ export default function DetailsDonate(props) {
           <p className="description">
             {description}
           </p>
-          <button className="btn-donate ">Donate</button>
+          <button onClick={()=>{dispatch({type:'OPEN_MODAL'})}} className="btn-donate ">Donate</button>
         </div>
       </div>
       <div className="details-page-donation">

@@ -2,11 +2,19 @@ import React from "react";
 import DetailsDonate from "../components/DetailsDonate";
 import Navbar from "../components/Navbar";
 import DonationList from "../components/DonationList";
+import {useSelector} from "react-redux"
+import ApproveModal from "../components/ApproveModal";
 
 export default function ViewFund() {
+
+  const openState = useSelector(state=>state.modalReducer);
+
+  const { openApproveModal } = openState;
+
   return (
     <div>
       <Navbar />
+      {openApproveModal ? <ApproveModal /> : null}
       <DetailsDonate
         img={process.env.PUBLIC_URL + "/assets/images/image-3.png"}
         title="The Strength of a People. Power of Community"
@@ -27,18 +35,21 @@ export default function ViewFund() {
               day="saturday"
               date="12 April 2021"
               total="45.000"
+              
             />
             <DonationList
               name="Jamal"
               day="saturday"
               date="12 April 2021"
               total="45.000"
+              
             />
             <DonationList
               name="Udin"
               day="saturday"
               date="12 April 2021"
               total="45.000"
+              
             />
           </div>
           <p className="load-mode">Load Mode</p>
@@ -51,18 +62,30 @@ export default function ViewFund() {
               day="saturday"
               date="12 April 2021"
               total="45.000"
+              button={true}
+              titleButton="View"
+              buttonColor="red"
+              click={true}
             />
             <DonationList
               name="Fadhil"
               day="saturday"
               date="12 April 2021"
               total="45.000"
+              button={true}
+              titleButton="View"
+              buttonColor="red"
+              click={true}
             />
             <DonationList
               name="Radif"
               day="saturday"
               date="12 April 2021"
               total="45.000"
+              button={true}
+              titleButton="View"
+              buttonColor="red"
+              click={true}
             />
           </div>
           <p className="load-mode">Load Mode</p>
