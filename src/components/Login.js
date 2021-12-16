@@ -10,10 +10,16 @@ export default function Login() {
             dispatch({type : 'CLOSE_MODAL'});
         }
     }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch({type : 'LOGIN_SUCCESS'});
+        dispatch({type: 'CLOSE_MODAL'});
+    }
     return (
         <div className='modal' onClick={close}>
             <div className='modal-body'>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className='form-heading'>
                         <h3>Login</h3>
                     </div>

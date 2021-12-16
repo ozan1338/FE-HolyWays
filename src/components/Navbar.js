@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
-import {useDispatch} from 'react-redux'
+import {useDispatch , useSelector} from 'react-redux';
 
 export default function Navbar() {
 
   const [menuToggle, setMenuToggle] = useState(false);
-  const [isLogin, setIsLogin] =  useState(false);
+  //const [login, setIsLogin] =  useState(false);
+
+  const loginState = useSelector(state => state.loginReducer)
+  const {login} = loginState;
 
   const dispatch = useDispatch();
 
@@ -19,7 +22,7 @@ export default function Navbar() {
         />
       </div>
       <div className="navbar-btn">
-        {isLogin ? (
+        {login ? (
           <div className="navbar-img">
             <div className="profile">
               <LazyLoadImage
@@ -55,7 +58,7 @@ export default function Navbar() {
                       alt="icon"
                       src={process.env.PUBLIC_URL + "/assets/images/logout.png"}
                     />
-                    <p onClick={()=>{setIsLogin(false)}}>Logout</p>
+                    <p onClick={()=>{dispatch({type:'LOGOUT_SUCCESS'})}}>Logout</p>
                   </li>
                 </ul>
               </div>
