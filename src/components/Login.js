@@ -1,9 +1,13 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 
-export default function Login({openLogin,openRegister}) {
+export default function Login() {
+
+    const dispatch = useDispatch();
+
     const close = (event) =>{
         if(event.target.getAttribute('class') === 'modal'){
-            openLogin(false);
+            dispatch({type : 'CLOSE_MODAL'});
         }
     }
     return (
@@ -17,7 +21,7 @@ export default function Login({openLogin,openRegister}) {
                     <input type='password' placeholder='Password' required />
                     <button type='submit'>Login</button>
                     <div className='form-link'>
-                        <span>Don't have an account ? Klik <strong onClick={()=>{openRegister(true); openLogin(false)}}>Here</strong></span>
+                        <span>Don't have an account ? Klik <strong onClick={()=>{dispatch({type: 'OPEN_REGISTER'})}}>Here</strong></span>
                     </div>
                 </form>
             </div>

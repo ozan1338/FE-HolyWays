@@ -1,18 +1,25 @@
-import React, {useState} from "react";
+import React from "react";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import {LazyLoadImage} from "react-lazy-load-image-component";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import {useDispatch , useSelector } from 'react-redux'
 
 export default function LandingPage() {
-    const [openLogin, setOpenLogin] = useState(false);
-    const [openRegister, setOpenRegister] = useState(false);
+    //const [openLogin, setOpenLogin] = useState(false);
+    //const [openRegister, setOpenRegister] = useState(false);
+    const openState = useSelector(state=>state.modalReducer);
+    const {openLogin , openRegister} = openState;
+
+    const dispatch = useDispatch();
+
+
   return (
     <div className="landing-page">
-      <Navbar openLogin={setOpenLogin} openRegister={setOpenRegister} />
-      {openLogin ? <Login openLogin={setOpenLogin} openRegister={setOpenRegister} /> : null}
-      {openRegister ? <Register openLogin={setOpenLogin} openRegister={setOpenRegister} /> : null}
+      <Navbar/>
+      {openLogin ? <Login /> : null}
+      {openRegister ? <Register  /> : null}
       
       <div className="container">
         <div className="landing-page-header">
@@ -29,7 +36,7 @@ export default function LandingPage() {
             and scrambled it to make a type specimen book.
           </p>
 
-          <button onClick={()=>{setOpenLogin(true)}}>Donate Now</button>
+          <button onClick={()=>{dispatch({type : 'OPEN_LOGIN'})}}>Donate Now</button>
         </div>
         <div className="landing-page-image">
           <LazyLoadImage

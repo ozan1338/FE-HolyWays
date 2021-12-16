@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
+import {useDispatch} from 'react-redux'
 
-export default function Navbar({ openLogin, openRegister }) {
+export default function Navbar() {
 
   const [menuToggle, setMenuToggle] = useState(false);
-  const [isLogin, setIsLogin] =  useState(true);
+  const [isLogin, setIsLogin] =  useState(false);
+
+  const dispatch = useDispatch();
 
   return (
     <div className="navbar">
@@ -63,8 +66,7 @@ export default function Navbar({ openLogin, openRegister }) {
             <button
               className="btn-login"
               onClick={() => {
-                openLogin(true);
-                openRegister(false);
+                dispatch({type : 'OPEN_LOGIN'});
               }}
             >
               Login
@@ -72,8 +74,7 @@ export default function Navbar({ openLogin, openRegister }) {
             <button
               className="btn-register"
               onClick={() => {
-                openLogin(false);
-                openRegister(true);
+                dispatch({type : 'OPEN_REGISTER'});
               }}
             >
               Register
