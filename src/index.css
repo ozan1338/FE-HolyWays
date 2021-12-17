@@ -208,6 +208,8 @@ button {
   justify-content: center;
 }
 
+
+
 .col-3 {
   width: 33.3%;
   margin-right: 15px;
@@ -531,7 +533,11 @@ span strong {
   margin-bottom: 4px;
   color: #00ff47;
   font-weight: normal;
-  background: linear-gradient(180deg, rgba(0, 255, 117, 0.1), rgba(0, 255, 133, 0.1));
+  background: linear-gradient(
+    180deg,
+    rgba(0, 255, 117, 0.1),
+    rgba(0, 255, 133, 0.1)
+  );
 }
 
 .row-donation {
@@ -547,7 +553,7 @@ span strong {
 .container-2 {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 60px;
+  margin-top: 50px;
 }
 
 .user-page h1 {
@@ -631,13 +637,16 @@ span strong {
 
 .col-2 {
   width: 50%;
+  height: 100%;
+  margin-bottom: 30px;
 }
 
 .raise-fund-body h1 {
   font-weight: bold;
-  font-size: 36px;
-  line-height: 44px;
+  font-size: 23px;
+  line-height: 28px;
 }
+
 
 .form-fund-page {
   display: flex;
@@ -827,16 +836,14 @@ input[type="file"] {
   color: #c42424;
 }
 
-input[type="range"] {
-  -webkit-appearance: none;
-  background-color: #c4c4c4;
-  width: 100%;
-  border-radius: 15px;
-}
-
 .btn-red {
   background-color: #c42424;
   color: #fff;
   margin-right: 20px;
   margin-top: -30px;
+}
+
+.form-fund-page-form button{
+  width: 50%;
+  margin: 20px 0 20px 50%;
 }

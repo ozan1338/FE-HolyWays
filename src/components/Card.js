@@ -1,5 +1,7 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import {useSelector, useDispatch} from "react-redux";
+import {Link} from "react-router-dom"
 
 export default function Card(props) {
     const {title , desc, img, price, column} = props;
@@ -13,6 +15,13 @@ export default function Card(props) {
     }else if( column === 4){
       col = 'col-4';
     }
+
+    const loginState = useSelector(state=>state.loginReducer);
+    const {login} = loginState;
+
+    const dispatch = useDispatch();
+
+
   return (
     <div  className={col}>
       <div className="card">
@@ -25,7 +34,8 @@ export default function Card(props) {
         <input type="range" id="vol" name="vol" min="0" max="100" />
         <div className="total">
           <p>{price}</p>
-          <button className="btn-donate ">Donate</button>
+          {!login ? <button onClick={()=>{dispatch({type: "OPEN_LOGIN"})}}  className="btn-donate ">Donate</button> : <Link to="/details"><button  className="btn-donate ">Donate</button></Link>}
+          
         </div>
       </div>
     </div>
