@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import {useDispatch , useSelector} from 'react-redux';
+import { logoutUser } from "../action/userActions";
 
 export default function Navbar() {
 
@@ -10,6 +11,7 @@ export default function Navbar() {
 
   const loginState = useSelector(state => state.loginReducer)
   const {login} = loginState;
+  //console.log(login);
 
   const dispatch = useDispatch();
 
@@ -58,7 +60,7 @@ export default function Navbar() {
                       alt="icon"
                       src={process.env.PUBLIC_URL + "/assets/images/logout.png"}
                     />
-                    <p onClick={()=>{dispatch({type:'LOGOUT_SUCCESS'})}}>Logout</p>
+                    <p onClick={()=>{dispatch(logoutUser())}}>Logout</p>
                   </li>
                 </ul>
               </div>

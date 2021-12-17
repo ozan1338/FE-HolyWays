@@ -6,19 +6,21 @@ import UserPage from './pages/UserPage';
 import RaiseFundPage from './pages/RaiseFundPage';
 import FormFund from './pages/FormFund';
 import ViewFund from './pages/ViewFund';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route path='/' component={LandingPage} exact />
+        <PrivateRoute exact path='/details' component={DetailsPage} />
+        <PrivateRoute exact path='/user' component={UserPage} />
+        <PrivateRoute exact path='/raise-fund' component={RaiseFundPage} />
+        <PrivateRoute exact path='/form-fund' component={FormFund} />
+        <PrivateRoute exact path='/view-fund' component={ViewFund} />
         {/* Later Add Id for detaild */}
-        <Route path='/details' component={DetailsPage} exact />
+        {/* <Route path='/details' component={DetailsPage} exact /> */}
         {/* Later Add id for user */}
-        <Route path='/user' component={UserPage} exact />
-        <Route path='/raise-fund' component={RaiseFundPage} />
-        <Route path='/form-fund' component={FormFund} />
-        <Route path='/view-fund' component={ViewFund} />
       </Switch>
     </Router>
   );
