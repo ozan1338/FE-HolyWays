@@ -8,14 +8,14 @@ export default function PrivateRoute({component: Component, path}) {
     const dispatch = useDispatch();
     const loginState = useSelector(state => state.loginReducer );
     const {login} = loginState;
-    console.log(login);
+    //console.log(login);
     const redirect = () => {
         history.push('/');
         dispatch({type: 'OPEN_LOGIN'})
     }
     //const isLogin = true;
 
-    console.log(Component , path);
+    //console.log(Component , path);
 
     return (
         <>

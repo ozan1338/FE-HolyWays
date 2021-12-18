@@ -1,23 +1,26 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import {useDispatch} from "react-redux" 
+import { useDispatch } from "react-redux";
 
 export default function DetailsDonate(props) {
-    const {img, title, gathered, goalGathered, totalDonation, dayLeft, description} = props;
+  const {
+    gathered,
+    goalGathered,
+    totalDonation,
+    dayLeft,
+    data
+  } = props;
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   return (
     <div>
       <div className="details-page">
         <div className="details-page-image">
-          <LazyLoadImage
-            src={img}
-            alt="LazyLoadImage"
-          />
+          <LazyLoadImage src={data[0].img} alt="LazyLoadImage" />
         </div>
         <div className="details-page-description">
-          <h1>{title}</h1>
+          <h1>{data[0].title}</h1>
           <div className="details-page-info">
             <p>
               <strong className="strong-red">Rp {gathered}</strong>
@@ -36,10 +39,15 @@ export default function DetailsDonate(props) {
               <strong>{dayLeft}</strong> More Day
             </p>
           </div>
-          <p className="description">
-            {description}
-          </p>
-          <button onClick={()=>{dispatch({type:'OPEN_MODAL'})}} className="btn-donate ">Donate</button>
+          <p className="description">{data[0].desc}</p>
+          <button
+            onClick={() => {
+              dispatch({ type: "OPEN_MODAL" });
+            }}
+            className="btn-donate "
+          >
+            Donate
+          </button>
         </div>
       </div>
       <div className="details-page-donation">

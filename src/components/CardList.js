@@ -26,7 +26,7 @@ export default function CardList({ column }) {
         <div className="card">
           <LazyLoadImage src={item.img} alt="img-3" />
           <h1>{item.title}</h1>
-          <p>{item.desc}</p>
+          <p>{item.desc.substring(0,75)}</p>
           <input type="range" id="vol" name="vol" min="0" max="100" />
           <div className="total">
             <p>{item.price}</p>
@@ -40,7 +40,7 @@ export default function CardList({ column }) {
                 Donate
               </button>
             ) : (
-              <Link to="/details">
+              <Link to={`/details/${item.id}`}>
                 <button className="btn-donate ">Donate</button>
               </Link>
             )}

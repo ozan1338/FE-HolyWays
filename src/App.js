@@ -15,7 +15,7 @@ function App() {
       <HelmetProvider>
         <Switch>
           <Route path="/" component={LandingPage} exact />
-          <PrivateRoute exact path="/details" component={DetailsPage} />
+          <PrivateRoute exact path="/details/:id" component={DetailsPage} />
           <PrivateRoute exact path="/user" component={UserPage} />
           <PrivateRoute exact path="/raise-fund" component={RaiseFundPage} />
           <PrivateRoute exact path="/form-fund" component={FormFund} />

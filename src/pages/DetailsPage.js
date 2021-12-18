@@ -5,11 +5,18 @@ import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 import { useSelector } from "react-redux";
 import { Helmet } from "react-helmet-async";
+import {useParams} from "react-router";
+import donation from "../DonationData"
 
 export default function DetailsPage() {
   const openState = useSelector((state) => state.modalReducer);
 
   const { openModal } = openState;
+
+  const {id} = useParams();
+
+  const donationById = donation.filter(item => item.id === id);
+  console.log(donationById);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,16 +31,11 @@ export default function DetailsPage() {
         <Navbar />
         {openModal ? <Modal /> : null}
         <DetailsDonate
-          img={process.env.PUBLIC_URL + "/assets/images/image-3.png"}
-          title="The Strength of a People. Power of Community"
           gathered="25.000.000"
           goalGathered="200.000.000"
           totalDonation="200"
           dayLeft="150"
-          description="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book."
+          data = {donationById}
         />
         <div className="details-page">
           <div className="details-page-donation-list">
