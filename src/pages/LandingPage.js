@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
-import Card from "../components/Card";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import { useDispatch, useSelector } from "react-redux";
 import { Helmet } from "react-helmet-async";
+import CardList from "../components/CardList";
 
 export default function LandingPage() {
   //const [openLogin, setOpenLogin] = useState(false);
@@ -95,30 +95,7 @@ export default function LandingPage() {
         <div className="landing-page-card">
           <h1>Donate Now</h1>
           <div className="row">
-            <Card
-              column={4}
-              title="The Strength of a People. Power of Community"
-              desc="Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry."
-              price="Rp 25.000.000"
-              img={process.env.PUBLIC_URL + "/assets/images/image-3.png"}
-            />
-            <Card
-              column={4}
-              title="Empowering Communities Ending Poverty"
-              desc="Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry."
-              price="Rp 50.000.000"
-              img={process.env.PUBLIC_URL + "/assets/images/image-4.png"}
-            />
-            <Card
-              column={4}
-              title="Please our brothers in flores"
-              desc="Lorem Ipsum is simply dummy text of the printing and typesetting
-                    industry."
-              price="Rp 100.000.000"
-              img={process.env.PUBLIC_URL + "/assets/images/image-5.png"}
-            />
+            <CardList column={4} />
           </div>
         </div>
       </div>

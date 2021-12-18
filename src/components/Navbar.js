@@ -17,7 +17,7 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <div className="navbar-brand">
-        <Link to='/'>
+        <Link to="/">
           <img
             alt="logo"
             src={process.env.PUBLIC_URL + "/assets/images/Icon.svg"}
