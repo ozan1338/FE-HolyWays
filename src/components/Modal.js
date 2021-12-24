@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { useDispatch } from "react-redux";
+import AlertError from "./AlertError";
 
 export default function Modal() {
   const dispatch = useDispatch();
+  const [alert] = useState(true)
   const close = (event) => {
     if (event.target.getAttribute("class") === "modal") {
       dispatch({ type: "CLOSE_MODAL" });
@@ -13,6 +15,7 @@ export default function Modal() {
     <div>
       <div className="modal" onClick={close}>
         <div className="modal-body modal-body-component">
+        {alert && <AlertError />}
           <form className="form-modal">
             <input type="text" placeholder="Nominal Donation" required />
             <div className="modal-small-text">

@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "../components/Navbar";
-import './formfund.css'
+import './formfund.css';
+import AlertError from "../components/AlertError";
 
 export default function FormFund() {
+  const [alert] = useState(true);
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -17,6 +19,7 @@ export default function FormFund() {
         <Navbar />
         <div className="container-2">
           <div className="form-fund-page">
+            {alert && <AlertError />}
             <h1>Make Raise Fund</h1>
             <form className="form-fund-page-form">
               <input type="text" placeholder="Title" />
