@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "../components/Navbar";
+import './formfund.css'
 
 export default function FormFund() {
   useEffect(() => {
@@ -19,7 +20,7 @@ export default function FormFund() {
             <h1>Make Raise Fund</h1>
             <form className="form-fund-page-form">
               <input type="text" placeholder="Title" />
-              <label htmlFor="file-input">Attach A File</label>
+              <label htmlFor="file-input">Attach Thumbnail</label>
               <input id="file-input" type="file" />
               <input type="text" placeholder="Goals Donation" />
               <textarea placeholder="Description" />

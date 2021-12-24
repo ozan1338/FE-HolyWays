@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import { Helmet } from "react-helmet-async";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import "./raisefund.css"
 
 export default function RaiseFundPage() {
   useEffect(() => {

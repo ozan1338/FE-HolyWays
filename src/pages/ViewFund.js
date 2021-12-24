@@ -5,6 +5,7 @@ import DonationList from "../components/DonationList";
 import { useSelector } from "react-redux";
 import ApproveModal from "../components/ApproveModal";
 import { Helmet } from "react-helmet-async";
+import DonationData from "../DonationData"
 
 export default function ViewFund() {
   const openState = useSelector((state) => state.modalReducer);
@@ -24,16 +25,12 @@ export default function ViewFund() {
         <Navbar />
         {openApproveModal ? <ApproveModal /> : null}
         <DetailsDonate
-          img={process.env.PUBLIC_URL + "/assets/images/image-3.png"}
-          title="The Strength of a People. Power of Community"
+          data={DonationData}
           gathered="25.000.000"
           goalGathered="200.000.000"
           totalDonation="200"
           dayLeft="150"
-          description="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book."
+          
         />
         <div className="details-page">
           <div className="details-page-donation-list">

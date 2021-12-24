@@ -3,17 +3,15 @@ import Navbar from "../components/Navbar";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Login from "../components/Login";
 import Register from "../components/Register";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Helmet } from "react-helmet-async";
 import CardList from "../components/CardList";
+import "./landingpage.css";
 
 export default function LandingPage() {
-  //const [openLogin, setOpenLogin] = useState(false);
-  //const [openRegister, setOpenRegister] = useState(false);
   const openState = useSelector((state) => state.modalReducer);
   const { openLogin, openRegister } = openState;
 
-  const dispatch = useDispatch();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -23,10 +21,7 @@ export default function LandingPage() {
     <>
       <Helmet>
         <title>HOLYWAYS || HOME</title>
-        <meta
-          name="description"
-          content="Help Each Other Who Need Help"
-        />
+        <meta name="description" content="Help Each Other Who Need Help" />
         <meta name="keyword" content="donation" />
       </Helmet>
       <div className="landing-page">
@@ -48,13 +43,9 @@ export default function LandingPage() {
               ever since the 1500s, when an unknown printer took a galley of
               type and scrambled it to make a type specimen book.
             </p>
-            <button
-              onClick={() => {
-                dispatch({ type: "OPEN_LOGIN" });
-              }}
-            >
-              Donate Now
-            </button>
+            <a href="#donate-now">
+              <button>Donate Now</button>
+            </a>
           </div>
           <div className="landing-page-image">
             <LazyLoadImage
@@ -92,7 +83,7 @@ export default function LandingPage() {
             </p>
           </div>
         </div>
-        <div className="landing-page-card">
+        <div id="donate-now" className="landing-page-card">
           <h1>Donate Now</h1>
           <div className="row">
             <CardList column={4} />

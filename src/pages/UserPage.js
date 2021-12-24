@@ -3,6 +3,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import DonationList from "../components/DonationList";
 import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet-async";
+import "./userpage.css"
 
 export default function UserPage() {
   useEffect(() => {

@@ -1,0 +1,129 @@
+.landing-page {
+  position: relative;
+}
+
+.landing-page-header {
+  position: absolute;
+  left: 100px;
+  top: 151px;
+  width: 717px;
+  height: 174px;
+  
+  display: flex;
+  align-items: center;
+}
+
+.landing-page-header h1{
+  color: #fff;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 55px;
+}
+
+.landing-page-description {
+  position: absolute;
+  width: 545px;
+  height: 200px;
+  left: 100px;
+  top: 350px;
+  color: #fff;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.landing-page-description button {
+  margin-top: 30px;
+  width: 177px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  color: #c42424;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.landing-page-image img {
+  position: absolute;
+  width: 515px;
+  height: 640px;
+  left: 834px;
+  top: 151px;
+}
+
+.landing-page-image-2 img {
+  position: absolute;
+  width: 423px;
+  height: 659px;
+  top: 700px;
+}
+
+.landing-page-header-2 {
+  position: absolute;
+  margin-top: 65px;
+  width: 717px;
+  height: 174px;
+  left: 540px;
+  top: 851px;
+  
+  display: flex;
+  align-items: center;
+}
+
+.landing-page-header-2 h1{
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 55px;
+}
+
+.landing-page-description-2 {
+  position: absolute;
+  width: 717px;
+  height: 175px;
+  left: 529px;
+  top: 1068px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  line-height: 25px;
+  color: #616161;
+}
+
+.landing-page-description-2-paragraph {
+  width: 314px;
+  height: 175px;
+}
+
+.landing-page-description-2-paragraph-2 {
+  width: 357px;
+  height: 100px;
+}
+
+.landing-page-card {
+  position: absolute;
+  width: 100%;
+  height: 620px;
+  top: 1500px;
+  text-align: center;
+}
+
+.landing-page-card h1 {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 44px;
+  color: #c42424;
+}
+
+.card h1 {
+  width: 90%;
+  margin: 20px;
+  text-align: left;
+  font-size: 23px;
+  line-height: 28px;
+  color: #000;
+}

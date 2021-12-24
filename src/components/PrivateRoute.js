@@ -19,7 +19,7 @@ export default function PrivateRoute({component: Component, path}) {
 
     return (
         <>
-         {login ? <Route component={Component} path={path} /> : redirect()}
+         {login ? <Route exact component={Component} path={path} /> : redirect()}
         </>
     )
 }

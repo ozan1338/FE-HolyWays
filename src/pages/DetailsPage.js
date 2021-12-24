@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { Helmet } from "react-helmet-async";
 import {useParams} from "react-router";
 import donation from "../DonationData"
+import "./detailspage.css"
 
 export default function DetailsPage() {
   const openState = useSelector((state) => state.modalReducer);

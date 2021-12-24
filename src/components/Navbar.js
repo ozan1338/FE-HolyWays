@@ -6,11 +6,9 @@ import { logoutUser } from "../action/userActions";
 
 export default function Navbar() {
   const [menuToggle, setMenuToggle] = useState(false);
-  //const [login, setIsLogin] =  useState(false);
 
   const loginState = useSelector((state) => state.loginReducer);
   const { login } = loginState;
-  //console.log(login);
 
   const dispatch = useDispatch();
 

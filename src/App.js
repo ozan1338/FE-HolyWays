@@ -20,8 +20,6 @@ function App() {
           <PrivateRoute exact path="/raise-fund" component={RaiseFundPage} />
           <PrivateRoute exact path="/form-fund" component={FormFund} />
           <PrivateRoute exact path="/view-fund" component={ViewFund} />
-          {/* Later Add Id for detaild */}
-          {/* <Route path='/details' component={DetailsPage} exact /> */}
           {/* Later Add id for user */}
         </Switch>
       </HelmetProvider>
