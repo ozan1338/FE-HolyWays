@@ -33,7 +33,26 @@ export const modalReducer = (state={} , action) => {
             openModal : false,
             openLogin : false,
             openRegister : false,
-            openApproveModal: true
+            openApproveModal: true,
+            data: action.payload
+        }
+        case 'OPEN_ALERT_SUCCESS' : return {
+            ...state,
+            openAlertSuccess : true,
+            openAlertError : false
+        }
+        case 'CLOSE_ALERT_SUCCESS' : return {
+            ...state,
+            openAlertSuccess : false
+        }
+        case 'OPEN_ALERT_ERROR' : return {
+            ...state,
+            openAlertError : true,
+            openAlertSuccess : true
+        }
+        case 'CLOSE_ALERT_ERROR' : return {
+            ...state,
+            openAlertError : false
         }
         default : return state
     }

@@ -6,24 +6,24 @@ import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
 import {useDispatch, useSelector} from "react-redux";
 
-export default function AlertError({message}) {
+export default function AlertSuccess({message}) {
   //const [open, setOpen] = React.useState(true);
   const state = useSelector(state => state.modalReducer)
-  const {openAlertError} = state;
+  const {openAlertSuccess} = state;
   const dispatch = useDispatch();
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Collapse in={openAlertError}>
+      <Collapse in={openAlertSuccess}>
         <Alert
-          severity="error"
+          severity="success"
           action={
             <IconButton
               aria-label="close"
               color="inherit"
               size="small"
               onClick={() => {
-                dispatch({type : "CLOSE_ALERT_ERROR"})
+                dispatch({type : "CLOSE_ALERT_SUCCESS"})
               }}
             >
               <CloseIcon fontSize="inherit" />

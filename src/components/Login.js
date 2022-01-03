@@ -1,16 +1,24 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../action/userActions";
 import AlertError from "./AlertError";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import Loading from "./Loading"
+import AlertSuccess from "./AlertSuccess";
 
 export default function Login() {
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [alert] = useState(false);
+  
   const [showPassword, setShowPassword] = useState(false);
+
+  const loginState = useSelector(state=>state.loginReducer);
+  const {error, loading} = loginState;
+
+
   const dispatch = useDispatch();
+
 
   const close = (event) => {
     if (event.target.getAttribute("class") === "modal") {
@@ -22,25 +30,25 @@ export default function Login() {
     event.preventDefault();
 
     const user = {
-      name,
+      email,
       password,
     };
 
     dispatch(loginUser(user));
-    dispatch({ type: "CLOSE_MODAL" });
+    //dispatch({ type: "CLOSE_MODAL" });
   };
   return (
     <div className="modal" onClick={close}>
       <div className="modal-body">
         <form onSubmit={handleSubmit}>
-          {alert && <AlertError />}
+          {error ? <AlertError message={error} /> : <AlertSuccess message="Login Success" />}
           <div className="form-heading">
             <h3>Login</h3>
           </div>
           <input
             type="text"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             placeholder="Email"
             required
           />
@@ -68,7 +76,7 @@ export default function Login() {
               />
             )}
           </div>
-          <button type="submit">Login</button>
+          <button type="submit">{loading ? <Loading /> : "LOGIN"}</button>
           <div className="form-link">
             <span>
               Don't have an account ? Klik{" "}

@@ -3,12 +3,24 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../action/userActions";
+import jwt_decode from 'jwt-decode'
 
 export default function Navbar() {
   const [menuToggle, setMenuToggle] = useState(false);
 
+  let decodedToken = 0;
+
   const loginState = useSelector((state) => state.loginReducer);
   const { login } = loginState;
+
+  if(login){
+    const token = JSON.parse(localStorage.getItem("currentUser"))
+    if(token){
+      decodedToken = jwt_decode(token)
+      //console.log(decodedToken);
+    }
+    
+  }
 
   const dispatch = useDispatch();
 
@@ -43,7 +55,7 @@ export default function Navbar() {
                         process.env.PUBLIC_URL + "/assets/images/profile.png"
                       }
                     />
-                    <Link to="/user">profile</Link>
+                    <Link to={`/user/${decodedToken.id}`}>profile</Link>
                   </li>
                   <li>
                     <img
@@ -52,7 +64,7 @@ export default function Navbar() {
                         process.env.PUBLIC_URL + "/assets/images/raise-fund.png"
                       }
                     />
-                    <Link to="/raise-fund">Raise fund</Link>
+                    <Link to={`/raise-fund/${decodedToken.id}`}>Raise fund</Link>
                   </li>
                   <li>
                     <img
@@ -77,6 +89,7 @@ export default function Navbar() {
               className="btn-login"
               onClick={() => {
                 dispatch({ type: "OPEN_LOGIN" });
+                setMenuToggle(false)
               }}
             >
               Login
@@ -85,6 +98,7 @@ export default function Navbar() {
               className="btn-register"
               onClick={() => {
                 dispatch({ type: "OPEN_REGISTER" });
+                setMenuToggle(false)
               }}
             >
               Register

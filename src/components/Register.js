@@ -1,14 +1,38 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AlertError from "./AlertError";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import Loading from "./Loading";
+import {registerUser} from "../action/userActions"
+import AlertSuccess from "./AlertSuccess";
 
 export default function Register() {
-  const [alert] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  const registerState = useSelector(state=>state.registerUserReducer);
+  const {loading,error} = registerState
+
+  const [name,setName] = useState('');
+  const [email,setEmail] = useState('');
+  const  [password,setPassword] = useState('');
+
   const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const user = {
+      name,
+      email,
+      password
+    }
+
+    console.log(user);
+    dispatch(registerUser(user))
+
+  };
+
+  
 
   const close = (event) => {
     if (event.target.getAttribute("class") === "modal") {
@@ -18,22 +42,38 @@ export default function Register() {
   return (
     <div className="modal" onClick={close}>
       <div className="modal-body">
-        <form>
-          {alert && <AlertError />}
+        <form onSubmit={handleSubmit}>
+          {error ? <AlertError message={error} /> : <AlertSuccess message="Register Success" />}
           <div className="form-heading">
             <h3>Register</h3>
           </div>
-          <input type="text" placeholder="Email" required />
+          <input onChange={(event)=>{setEmail(event.target.value)}} type="text" placeholder="Email" required />
           <div className="input-icon">
             <input
+            
+              onChange={(event)=>{setPassword(event.target.value)}}
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               required
             />
-            {showPassword ? <VisibilityIcon onClick={()=>{setShowPassword(false)}} className="icon" /> : <VisibilityOffIcon onClick={()=>{setShowPassword(true)}} className="icon" />}
+            {showPassword ? (
+              <VisibilityIcon
+                onClick={() => {
+                  setShowPassword(false);
+                }}
+                className="icon"
+              />
+            ) : (
+              <VisibilityOffIcon
+                onClick={() => {
+                  setShowPassword(true);
+                }}
+                className="icon"
+              />
+            )}
           </div>
-          <input type="text" placeholder="Full Name" required />
-          <button type="submit">Login</button>
+          <input onChange={(event)=>{setName(event.target.value)}} type="text" placeholder="Full Name" required />
+          <button type="submit" >{loading ? <Loading /> : "Register"}</button>
           <div className="form-link">
             <span>
               Already have an account ? Klik{" "}

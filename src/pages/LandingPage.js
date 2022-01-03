@@ -3,19 +3,26 @@ import Navbar from "../components/Navbar";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Login from "../components/Login";
 import Register from "../components/Register";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Helmet } from "react-helmet-async";
 import CardList from "../components/CardList";
 import "./landingpage.css";
+import { getAllFund } from "../action/fundAction";
+import Loading from "../components/Loading";
 
 export default function LandingPage() {
   const openState = useSelector((state) => state.modalReducer);
   const { openLogin, openRegister } = openState;
 
+  const dispatch = useDispatch();
+
+  const fundState = useSelector((state) => state.getAllFundReducer);
+  const { loading, funds } = fundState;
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+    dispatch(getAllFund());
+  }, [dispatch]);
 
   return (
     <>
@@ -86,7 +93,19 @@ export default function LandingPage() {
         <div id="donate-now" className="landing-page-card">
           <h1>Donate Now</h1>
           <div className="row">
-            <CardList column={4} />
+            {loading ? (
+              <Loading />
+            ) : (
+              funds.map((item, index) => {
+                return (
+                  <CardList
+                    key={index}
+                    data={item}
+                    column={4}
+                  />
+                );
+              })
+            )}
           </div>
         </div>
       </div>
