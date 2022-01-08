@@ -5,28 +5,32 @@ export const modalReducer = (state={} , action) => {
             openLogin : true,
             openRegister : false,
             openModal : false,
-            openApproveModal: false
+            openApproveModal: false,
+            openEditProfile: false,
         }
         case 'OPEN_REGISTER' : return{
             ...state,
             openLogin : false,
             openRegister : true,
             openModal : false,
-            openApproveModal: false
+            openApproveModal: false,
+            openEditProfile: false,
         }
         case 'CLOSE_MODAL' : return{
             ...state,
             openLogin : false,
             openRegister : false,
             openModal : false,
-            openApproveModal: false
+            openApproveModal: false,
+            openEditProfile: false,
         }
         case 'OPEN_MODAL' : return {
             ...state,
             openModal : true,
             openLogin : false,
             openRegister : false,
-            openApproveModal: false
+            openApproveModal: false,
+            openEditProfile: false,
         }
         case 'OPEN_APPROVE_MODAL' : return {
             ...state,
@@ -34,7 +38,16 @@ export const modalReducer = (state={} , action) => {
             openLogin : false,
             openRegister : false,
             openApproveModal: true,
+            openEditProfile: false,
             data: action.payload
+        }
+        case 'OPEN_EDIT_PROFILE_MODAL' : return {
+            ...state,
+            openModal : false,
+            openLogin : false,
+            openRegister : false,
+            openApproveModal: false,
+            openEditProfile: true
         }
         case 'OPEN_ALERT_SUCCESS' : return {
             ...state,

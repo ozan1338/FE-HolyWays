@@ -8,9 +8,13 @@ import "./userpage.css";
 import { useParams } from "react-router-dom";
 import { getUserById } from "../action/userActions";
 import Loading from "../components/Loading";
+import EditProfile from "../components/EditProfile";
 
 export default function UserPage() {
   const { id } = useParams();
+
+  const state = useSelector((state) => state.modalReducer);
+  const { openEditProfile } = state;
 
   const userState = useSelector((state) => state.getUserByIdReducer);
   const { loading, user } = userState;
@@ -32,15 +36,36 @@ export default function UserPage() {
       </Helmet>
       <div>
         <Navbar />
+        {openEditProfile ? (
+          <EditProfile
+            userId={id}
+            profileId={user[0]?.profile?.id}
+            nameUser={user[0]?.name}
+            emailUser={user[0]?.email}
+            phoneNumber={user[0]?.profile?.phoneNumber}
+          />
+        ) : null}
         {loading ? (
           <Loading />
         ) : (
           <div className="user-page">
             <div className="user-page-profile">
               <h1>My Profile</h1>
+              <button
+                className="edit-profile-button"
+                onClick={() => {
+                  dispatch({ type: "OPEN_EDIT_PROFILE_MODAL" });
+                }}
+              >
+                Edit Profile
+              </button>
               <div className="user-page-profile-body">
                 <LazyLoadImage
-                  src={process.env.PUBLIC_URL + "/assets/images/image-6.png"}
+                  src={
+                    user[0]?.profile
+                      ? user[0]?.profile.photoProfile
+                      : process.env.PUBLIC_URL + "/assets/images/img_avatar.png"
+                  }
                 />
                 <div className="user-page-profile-detail">
                   <div>
@@ -53,7 +78,12 @@ export default function UserPage() {
                   </div>
                   <div>
                     <h3>Phone</h3>
-                    <h4>083896833122</h4>
+                    <h4>
+                      +62
+                      {user[0]?.profile
+                        ? user[0]?.profile.phoneNumber
+                        : "xxxxxxxxxx"}
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -62,7 +92,14 @@ export default function UserPage() {
               <h1>History Donation</h1>
               {user[0]?.transactions
                 ? user[0].transactions.map((item, index) => {
-                    return <DonationList key={index} data={item} />;
+                    return (
+                      <DonationList
+                        button={true}
+                        donationTitle={true}
+                        key={index}
+                        data={item}
+                      />
+                    );
                   })
                 : null}
             </div>

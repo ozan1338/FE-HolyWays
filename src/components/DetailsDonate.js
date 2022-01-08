@@ -1,32 +1,65 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDispatch } from "react-redux";
-import convertRupiah from 'rupiah-format';
+import { useHistory } from "react-router-dom";
+import convertRupiah from "rupiah-format";
+import jwt_decode from "jwt-decode";
 
 export default function DetailsDonate(props) {
-  const {
-    dayLeft,
-    data
-  } = props;
+  const { data } = props;
 
 
-  let gathered1 = data[0]?.userDonate.map(item => {
-    if(item.status === "success"){
-      return item.donateAmount
-    }
-    return 0
-  })
-
-  const reducer = (previousValue, currentValue) => previousValue + currentValue
-
-  gathered1 = gathered1?.reduce(reducer, 0)
+  // const setExpiredDateState = useSelector(state=>state.setExpiredDateReducer);
+  // let expiredDateObject = {}
+  // if(!detailPage){
+  //   expiredDateObject = setExpiredDateState?.find(item => item.fundId === data[0]?.id)
+  // }
+  // let expiredDate = 0
+  // if(expiredDateObject){
+  //   expiredDate = parseInt(expiredDateObject.expiredDate)
+  // }
   
-  let donationHasBeenApproved = data[0]?.userDonate.filter(item => item.status === "success")
+
+  const history = useHistory();
+
+  const token = JSON.parse(localStorage.getItem("currentUser"));
+  let decodedToken = jwt_decode(token);
+
+  let gathered1 = data[0]?.userDonate.map((item) => {
+    if (item.status === "success") {
+      return item.donateAmount;
+    }
+    return 0;
+  });
+
+  const reducer = (previousValue, currentValue) => previousValue + currentValue;
+
+  gathered1 = gathered1?.reduce(reducer, 0);
+
+  let donationHasBeenApproved = data[0]?.userDonate.filter(
+    (item) => item.status === "success"
+  );
 
   const dispatch = useDispatch();
 
-  //console.log(data[0]?.userDonate[0].user.name);
-  //console.log(data);
+  const showChatPage = () => {
+    if (data[0]?.userId === decodedToken.id) {
+      history.push(`/admin-chat-page/${decodedToken.id}`);
+    } else {
+      history.push(`/chat-page/${decodedToken.id}/${data[0]?.userId}`);
+    }
+  };
+
+  // const handelExpiredDate = (event) => {
+  //   if(event.key === "Enter") {
+  //     //setExpiredDate(event.target.value)
+  //     dispatch(setExpiredDateAction(event.target.value,data[0].id))
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   expiredDate > 0 && setTimeout(()=> expiredDate-1, 1000 * 60 * 60 * 24)
+  // }, [expiredDate])
 
   return (
     <div>
@@ -38,31 +71,42 @@ export default function DetailsDonate(props) {
           <h1>{data[0]?.title}</h1>
           <div className="details-page-info">
             <p>
-              <strong className="strong-red">{convertRupiah.convert(gathered1)}</strong>
+              <strong className="strong-red">
+                {convertRupiah.convert(gathered1)}
+              </strong>
             </p>
             <p>gathered from</p>
             <p>
               <strong>{convertRupiah.convert(data[0]?.goal)}</strong>
             </p>
           </div>
-          <input disabled="disabled" type="range" id="vol" name="vol" min="0" max={data[0]?.goal} defaultValue={gathered1} />
+          <input
+            disabled="disable"
+            type="range"
+            id="vol"
+            name="vol"
+            min="0"
+            max={data[0]?.goal}
+            defaultValue={gathered1}
+          />
           <div className="details-page-info-2">
             <p>
               <strong>{donationHasBeenApproved?.length}</strong> Donation
             </p>
-            <p>
-              <strong>{dayLeft}</strong> More Day
+            <p className="expired-date">
+              <strong>150</strong>More Day
             </p>
           </div>
           <p className="description">{data[0]?.description}</p>
           <button
             onClick={() => {
-              dispatch({ type: "OPEN_MODAL" });
+               dispatch({ type: "OPEN_MODAL" });
             }}
-            className="btn-donate "
+            className="btn-donate"
           >
             Donate
           </button>
+          <button onClick={showChatPage}>Chat Admin</button>
         </div>
       </div>
       <div className="details-page-donation">

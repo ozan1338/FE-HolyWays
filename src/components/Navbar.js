@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../action/userActions";
-import jwt_decode from 'jwt-decode'
+import { getUserById, logoutUser } from "../action/userActions";
+import jwt_decode from "jwt-decode";
 
 export default function Navbar() {
   const [menuToggle, setMenuToggle] = useState(false);
@@ -13,16 +13,24 @@ export default function Navbar() {
   const loginState = useSelector((state) => state.loginReducer);
   const { login } = loginState;
 
-  if(login){
-    const token = JSON.parse(localStorage.getItem("currentUser"))
-    if(token){
-      decodedToken = jwt_decode(token)
+  const userState = useSelector((state) => state.getUserByIdReducer);
+  const { user } = userState;
+
+  if (login) {
+    const token = JSON.parse(localStorage.getItem("currentUser"));
+    if (token) {
+      decodedToken = jwt_decode(token);
       //console.log(decodedToken);
     }
-    
   }
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    dispatch(getUserById(decodedToken.id));
+  }, [dispatch, decodedToken.id]);
 
   return (
     <div className="navbar">
@@ -39,12 +47,17 @@ export default function Navbar() {
           <div className="navbar-img">
             <div className="profile">
               <LazyLoadImage
-                src={process.env.PUBLIC_URL + "/assets/images/image-6.png"}
+                src={
+                  user[0]?.profile
+                    ? user[0]?.profile.photoProfile
+                    : process.env.PUBLIC_URL + "/assets/images/img_avatar.png"
+                }
                 onClick={() => {
                   menuToggle ? setMenuToggle(false) : setMenuToggle(true);
                 }}
               />
             </div>
+
             {menuToggle ? (
               <div className="menu">
                 <ul>
@@ -64,7 +77,43 @@ export default function Navbar() {
                         process.env.PUBLIC_URL + "/assets/images/raise-fund.png"
                       }
                     />
-                    <Link to={`/raise-fund/${decodedToken.id}`}>Raise fund</Link>
+                    <Link to={`/raise-fund/${decodedToken.id}`}>
+                      Raise fund
+                    </Link>
+                  </li>
+                  <li>
+                    {/* <img
+                      alt="icon"
+                      src={
+                        process.env.PUBLIC_URL + "/assets/images/raise-fund.png"
+                      }
+                    /> */}
+                    <svg
+                      id="mail"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      className="icon line"
+                      width="22"
+                      height="20"
+                    >
+                      <rect
+                        id="primary"
+                        x="3"
+                        y="5"
+                        width="18"
+                        height="14"
+                        rx="1"
+                      ></rect>
+                      <polyline
+                        id="primary-2"
+                        data-name="primary"
+                        points="3 8 12 13 21 8"
+                        
+                      ></polyline>
+                    </svg>
+                    <Link to={`/admin-chat-page/${decodedToken.id}`}>
+                      View Message
+                    </Link>
                   </li>
                   <li>
                     <img
@@ -89,7 +138,7 @@ export default function Navbar() {
               className="btn-login"
               onClick={() => {
                 dispatch({ type: "OPEN_LOGIN" });
-                setMenuToggle(false)
+                setMenuToggle(false);
               }}
             >
               Login
@@ -98,7 +147,7 @@ export default function Navbar() {
               className="btn-register"
               onClick={() => {
                 dispatch({ type: "OPEN_REGISTER" });
-                setMenuToggle(false)
+                setMenuToggle(false);
               }}
             >
               Register

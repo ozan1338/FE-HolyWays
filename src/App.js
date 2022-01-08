@@ -7,6 +7,8 @@ import RaiseFundPage from "./pages/RaiseFundPage";
 import FormFund from "./pages/FormFund";
 import ViewFund from "./pages/ViewFund";
 import PrivateRoute from "./components/PrivateRoute";
+import ChatPage from "./pages/ChatPage";
+import ChatAdmin from "./pages/ChatAdmin";
 import { HelmetProvider } from "react-helmet-async";
 
 function App() {
@@ -20,7 +22,8 @@ function App() {
           <PrivateRoute exact path="/raise-fund/:id" component={RaiseFundPage} />
           <PrivateRoute exact path="/form-fund" component={FormFund} />
           <PrivateRoute exact path="/view-fund/:id" component={ViewFund} />
-          {/* Later Add id for user */}
+          <PrivateRoute exact path="/chat-page/:id/:adminId" component={ChatPage} />
+          <PrivateRoute exact path="/admin-chat-page/:id" component={ChatAdmin} />
         </Switch>
       </HelmetProvider>
     </Router>

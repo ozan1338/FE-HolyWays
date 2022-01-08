@@ -68,7 +68,22 @@
   justify-content: space-between;
 }
 
-.details-page-info-2 strong {
+.expired-date{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.expired-date strong{
+  padding-right: 5px
+}
+
+.expired-date input[type="number"]{
+  margin-right: 5px;
+}
+
+
+.details-page-info-2 strong, .expired-date strong {
   color: #000;
   font-size: 18px;
   line-height: 22px;
@@ -81,7 +96,7 @@
   line-height: 25px;
 }
 
-.details-page-description button {
+.details-page-description button{
   margin: 10px;
   background-color: #c42424;
   width: 83%;
@@ -93,6 +108,12 @@
   font-size: 18px;
   line-height: 25px;
 }
+
+.btn-donate-notAllowed{
+  cursor: not-allowed;
+}
+
+
 
 .details-page-donation-header {
   display: flex;

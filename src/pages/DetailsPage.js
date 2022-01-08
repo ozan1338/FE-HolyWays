@@ -22,6 +22,7 @@ export default function DetailsPage() {
   const fundState = useSelector((state)=> state.getFundByIdReducer);
   const {fund, loading} = fundState
 
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -40,6 +41,7 @@ export default function DetailsPage() {
         {loading ? <Loading /> : 
         <>
         <DetailsDonate
+          detailPage={true}
           dayLeft="150"
           data = {fund}
         />

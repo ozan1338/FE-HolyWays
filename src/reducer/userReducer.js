@@ -62,3 +62,51 @@ export const getUserByIdReducer = (state={user: []}, action) => {
         default : return state
     }
 }
+
+export const addProfileReducer = (state={}, action) => {
+    switch(action.type){
+        case 'ADD_PROFILE_REQUEST': return {
+            ...state,
+        }
+        case 'ADD_PROFILE_SUCCESS': return {
+            ...state,
+        }
+        case 'ADD_PROFILE_FAILED': return {
+            ...state,
+            error: action.payload
+        }
+        default : return state
+    }
+}
+
+export const updateProfileReducer = (state={}, action) => {
+    switch(action.type){
+        case 'UPDATE_PROFILE_REQUEST': return {
+            ...state,
+        }
+        case 'UPDATE_PROFILE_SUCCESS': return {
+            ...state,
+        }
+        case 'UPDATE_PROFILE_FAILED': return {
+            ...state,
+            error: action.payload
+        }
+        default : return state
+    }
+}
+
+export const updateUserReducer = (state={}, action) => {
+    switch(action.type){
+        case 'UPDATE_USER_REQUEST' : return {
+            loading: true,
+        }
+        case 'UPDATE_USER_SUCCESS' : return {
+            loading: false,
+        }
+        case 'UPDATE_USER_FAILED' : return {
+            loading: false,
+            error: action.payload
+        } 
+        default : return state
+    }
+}

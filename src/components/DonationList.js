@@ -2,7 +2,7 @@ import React from "react";
 import {useDispatch} from 'react-redux'
 import convertRupiah from 'rupiah-format'
 
-export default function DonationList({ data, button, titleButton, buttonColor, click }) {
+export default function DonationList({ data, button,  click, donationTitle, titleButton }) {
   
   const  dispatch = useDispatch();
 
@@ -13,7 +13,7 @@ export default function DonationList({ data, button, titleButton, buttonColor, c
   // console.log(rupiah);
 
   const color = ()=>{
-    if(buttonColor === 'red'){
+    if(data?.status === 'pending'){
       return 'btn-red'
     }else{
       return 'btn-green'
@@ -31,7 +31,7 @@ export default function DonationList({ data, button, titleButton, buttonColor, c
   return (
     <div className="col-1">
       <div className="card-donation-list">
-        <h1>{data?.user.name}</h1>
+        <h1>{donationTitle ? data?.UserDonate.title : data?.user.name}</h1>
         <p>
           <strong>{day}</strong>, {date}
         </p>
@@ -39,7 +39,7 @@ export default function DonationList({ data, button, titleButton, buttonColor, c
           <p>
             <strong className="strong-red">Total: {convertRupiah.convert(data.donateAmount)}</strong>
           </p>
-          {button ? <button  onClick={handleClick} className={color()} ><p>{titleButton}</p></button> : null}
+          {button ? <button  onClick={handleClick} className={color()} ><p>{titleButton? titleButton : data?.status}</p></button> : null}
           
         </div>
       </div>

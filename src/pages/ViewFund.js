@@ -31,6 +31,8 @@ export default function ViewFund() {
 
   }
 
+  //console.log('fund ', fund);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getFundById(id));

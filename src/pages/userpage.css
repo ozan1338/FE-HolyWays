@@ -37,8 +37,13 @@
 }
 
 .user-page-profile-body img {
+  min-height: 246px;
+  max-height: 246px;
+  min-width: 180px;
+  max-width: 180px;
   background-blend-mode: normal;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 .user-page-profile-detail div {
@@ -73,4 +78,10 @@
 .user-page-history-donation .card-donation-list h1 {
   font-size: 18px;
   line-height: 17px;
+}
+
+.edit-profile-button{
+  background-color: #c42424;
+  width: 349px;
+  margin-bottom: 15px;
 }
