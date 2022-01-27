@@ -27,6 +27,14 @@
   background-color: #ccc;
 }
 
+.background-green{
+  background: linear-gradient(
+    180deg,
+    rgba(0, 255, 117, 0.1),
+    rgba(0, 255, 133, 0.1)
+  );
+}
+
 .chat-contact-body img {
   width: 60px;
   height: 60px;

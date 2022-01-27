@@ -22,6 +22,7 @@ export default function DetailsPage() {
   const fundState = useSelector((state)=> state.getFundByIdReducer);
   const {fund, loading} = fundState
 
+  //  console.log(fund);
 
   useEffect(() => {
     window.scrollTo(0, 0);

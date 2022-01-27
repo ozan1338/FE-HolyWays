@@ -20,6 +20,7 @@ export default function FormFund() {
     thumbnail: null,
     goal: "",
     description: "",
+    expiredDate: 0
   });
 
   const handleChange = (event) => {
@@ -44,8 +45,9 @@ export default function FormFund() {
       formData.set("title", form.title);
       formData.set("thumbnail", form.thumbnail[0], form.thumbnail[0].name);
       formData.set("goal", form.goal);
+      formData.set("expiredDate", form.expiredDate);
       formData.set("description", form.description);
-  
+      //console.log(formData);
       dispatch(addFund(formData));
     }
   };
@@ -74,6 +76,7 @@ export default function FormFund() {
                 <label onChange={handleChange} htmlFor="thumbnail">Attach Thumbnail</label>
                 <input onChange={handleChange} name="thumbnail" id="thumbnail" type="file" />
                 <input onChange={handleChange} name="goal" type="text" placeholder="Goals Donation" />
+                <input onChange={handleChange} name="expiredDate" type="number" placeholder="ExpiredDate" />
                 <textarea onChange={handleChange} name="description" placeholder="Description" />
                 <button>{loading ? <Loading /> : "Public Fundraising"}</button>
               </form>

@@ -18,6 +18,7 @@ export default function ViewFund() {
 
   const fundState = useSelector((state) => state.getFundByIdReducer);
   const { fund, loading } = fundState;
+  //console.log(fund);
 
   const { id } = useParams();
 

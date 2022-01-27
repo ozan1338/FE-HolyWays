@@ -11,6 +11,7 @@ export default function DonationList({ data, button,  click, donationTitle, titl
   //console.log(date);
   // const rupiah = convertRupiah.convert(data.donateAmount)
   // console.log(rupiah);
+  console.log(data);
 
   const color = ()=>{
     if(data?.status === 'pending'){

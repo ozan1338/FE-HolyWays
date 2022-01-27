@@ -241,10 +241,10 @@ textarea {
   padding: 0 20px;
 }
 
-input[type="number"] {
+/* input[type="number"] {
   height: 60%;
   width: 40%;
-}
+} */
 
 form button {
   background-color: #c42424;
@@ -541,7 +541,30 @@ input[type="file"] {
   position: relative;
 }
 
+.navbar-img .svg {
+  z-index: 1;
+  color: rgb(251, 255, 0);
+  position: absolute;
+  left: 40px;
+  top: -3px;
+  animation: pulse  1500ms infinite;
+  border-radius: 50%;
+}
 
+@keyframes pulse{
+  0% {
+    box-shadow: rgb(251, 255, 0) 0 0 0 0;
+  }
+   75% {
+     box-shadow: rgb(251, 255, 0, 0.0) 0 0 0 16px;
+   }
+}
+
+.notif-active {
+  stroke: #c42424;
+  color: #c42424 !important;
+  opacity: 1;
+}
 
 rect {
   fill: none;
@@ -557,5 +580,9 @@ polyline {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 2;
+}
+
+.btn-not-allowed {
+  cursor:not-allowed;
 }
 

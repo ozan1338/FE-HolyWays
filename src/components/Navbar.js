@@ -4,9 +4,18 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, logoutUser } from "../action/userActions";
 import jwt_decode from "jwt-decode";
+import { io } from "socket.io-client";
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import { notifAction } from "../action/notifAction";
 
-export default function Navbar() {
+let socket
+
+export default function Navbar({chatPage}) {
   const [menuToggle, setMenuToggle] = useState(false);
+
+  //const [notif,setNotif] = useState(false)
+
+  const {notif} = useSelector(state=>state.notifReducer)
 
   let decodedToken = 0;
 
@@ -29,7 +38,26 @@ export default function Navbar() {
   useEffect(() => {
     window.scrollTo(0, 0);
 
+    if(login){
+      socket = io("http://localhost:5000", {
+        auth: {
+          token: JSON.parse(localStorage.getItem("currentUser")),
+        },
+        query: {
+          id: decodedToken.id,
+        },
+      });
+
+      socket.on("new-message", (idSender)=>{
+        console.log(idSender);
+        dispatch(notifAction(idSender))
+      })
+    }
+
+
+
     dispatch(getUserById(decodedToken.id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, decodedToken.id]);
 
   return (
@@ -45,6 +73,7 @@ export default function Navbar() {
       <div className="navbar-btn">
         {login ? (
           <div className="navbar-img">
+          {notif ? <NotificationsIcon className="svg" /> : null}
             <div className="profile">
               <LazyLoadImage
                 src={
@@ -82,12 +111,6 @@ export default function Navbar() {
                     </Link>
                   </li>
                   <li>
-                    {/* <img
-                      alt="icon"
-                      src={
-                        process.env.PUBLIC_URL + "/assets/images/raise-fund.png"
-                      }
-                    /> */}
                     <svg
                       id="mail"
                       xmlns="http://www.w3.org/2000/svg"
@@ -97,6 +120,7 @@ export default function Navbar() {
                       height="20"
                     >
                       <rect
+                        className={notif ? "notif-active" : null}
                         id="primary"
                         x="3"
                         y="5"
@@ -105,13 +129,14 @@ export default function Navbar() {
                         rx="1"
                       ></rect>
                       <polyline
+                        className={notif ? "notif-active" : null}
                         id="primary-2"
                         data-name="primary"
                         points="3 8 12 13 21 8"
                         
                       ></polyline>
                     </svg>
-                    <Link to={`/admin-chat-page/${decodedToken.id}`}>
+                    <Link className={notif ? "notif-active" : null} to={`/admin-chat-page/${decodedToken.id}`}>
                       View Message
                     </Link>
                   </li>

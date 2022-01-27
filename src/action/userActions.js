@@ -17,7 +17,7 @@ export const registerUser = (data) => async (dispatch) => {
         dispatch({type: 'OPEN_ALERT_SUCCESS'})
         
         setTimeout(()=>{
-            dispatch({type: 'LOGIN_SUCCESS'})
+            dispatch({type: 'LOGIN_SUCCESS', payload: res.data.data.user.id})
             dispatch({type: 'USER_REGISTER_SUCCESS'})
             localStorage.setItem('currentUser', JSON.stringify(res.data.data.user.token));
             dispatch(addProfile(res.data.data.user.id))
@@ -49,7 +49,7 @@ export const loginUser = (data) => async(dispatch) => {
         
         dispatch({type: 'OPEN_ALERT_SUCCESS'})
         setTimeout(()=>{
-            dispatch({type: 'LOGIN_SUCCESS'})
+            dispatch({type: 'LOGIN_SUCCESS', payload: res.data.data.user.id})
             localStorage.setItem('currentUser', JSON.stringify(res.data.data.user.token));
             dispatch({type: 'CLOSE_MODAL'})
             dispatch({type: 'CLOSE_ALERT_SUCCESS'})

@@ -1,8 +1,8 @@
 import { modalReducer } from "./reducer/modalReducer";
 import { loginReducer, registerUserReducer, getUserByIdReducer, addProfileReducer, updateUserReducer, updateProfileReducer } from "./reducer/userReducer";
-import { getAllFundReducer, getFundByIdReducer, addFundReducer } from "./reducer/fundReducer";
+import { getAllFundReducer, getFundByIdReducer, addFundReducer, updateFundReducer } from "./reducer/fundReducer";
 import { addTransactionReducer, updateTransactionReducer } from "./reducer/transactionReducer";
-import { setExpiredDateReducer } from "./reducer/dateExpiredReducer";
+import { notifReducer } from "./reducer/notifReducer";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { createStore, applyMiddleware, combineReducers } from "redux";
@@ -20,17 +20,17 @@ const finalReducer = combineReducers({
     addProfileReducer,
     updateUserReducer,
     updateProfileReducer,
-    setExpiredDateReducer
+    notifReducer,
+    updateFundReducer
 });
 
-const expiredDateObject = []
 
 const currentUser  = localStorage.getItem('currentUser') ? {login : true} : {};
-const expiredDate = localStorage.getItem('expiredDate') ? JSON.parse(localStorage.getItem('expiredDate')) : {expiredDateObject}
+const notification = localStorage.getItem('notif') ? JSON.parse(localStorage.getItem('notif')) : {idSender:[]}
 
 const initialState = {
     loginReducer : currentUser,
-    setExpiredDateReducer : expiredDate
+    notifReducer : {...notification}
 }
 
 const store = createStore(finalReducer, initialState ,composeWithDevTools(

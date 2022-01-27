@@ -126,11 +126,13 @@ export default function ChatPage() {
               messages={message}
             />
           </div>
-          <input
-            type="text"
-            placeholder="Enter Message..."
-            onKeyPress={onSendMessage}
-          />
+          {contact && (
+            <input
+              type="text"
+              placeholder="Enter Message..."
+              onKeyPress={onSendMessage}
+            />
+          )}
         </div>
       </div>
     </>

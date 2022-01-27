@@ -62,7 +62,6 @@ export default function ChatAdmin() {
             ? item.senderMessage[item.senderMessage.length - 1]?.message
             : "Click here to start message",
       }));
-      //console.log(dataContacts);
 
       setContacts(dataContacts);
     });
@@ -81,13 +80,13 @@ export default function ChatAdmin() {
     socket.on("messages", (data) => {
       //get data messages
       if (data.length > 0) {
-        console.log(data);
+        //console.log(data);
         const dataMessages = data.map((item) => ({
           idSender: item.sender.id,
           message: item.message,
-          createdAt: item.createdAt
+          createdAt: item.createdAt,
         }));
-        console.log(dataMessages);
+        //console.log(dataMessages);
         setMessage(dataMessages);
       }
       loadContacts();
@@ -114,7 +113,7 @@ export default function ChatAdmin() {
 
   return (
     <>
-      <Navbar />
+      <Navbar chatPage={true} />
       <div className="chat-page">
         <div className="chat-contact">
           <ContactChat
@@ -132,11 +131,11 @@ export default function ChatAdmin() {
               messages={message}
             />
           </div>
-          <input
+          {contact && (<input
             type="text"
             placeholder="Enter Message..."
             onKeyPress={onSendMessage}
-          />
+          />)  }
         </div>
       </div>
     </>

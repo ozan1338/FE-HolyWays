@@ -1,13 +1,18 @@
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import {useSelector} from "react-redux"
 
 export default function MessageChat({ contact, user, messages }) {
-  console.log(messages)
+  //const dispatch = useDispatch();
+  //console.log(messages)
   //console.log(contact);
   const idSender = contact?.recepientMessage?.filter(
     (item) => item.idSender === user.id
   );
-  //console.log(idSender);
+
+  const userState = useSelector((state) => state.getUserByIdReducer);
+  const profile = userState.user;
+
   return (
     <>
       {contact
@@ -26,8 +31,7 @@ export default function MessageChat({ contact, user, messages }) {
                     <LazyLoadImage
                       src={
                         item.idSender === user.id
-                          ? process.env.PUBLIC_URL +
-                            "/assets/images/img_avatar.png"
+                          ? profile[0].profile.photoProfile
                           : contact.profile.photoProfile
                       }
                       alt="Avatar"

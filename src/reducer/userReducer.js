@@ -8,7 +8,8 @@ export const loginReducer = (state={}, action) => {
             ...state,
             loading: false,
             login: true,
-            error: false
+            error: false,
+            userId: action.payload
         }
         case 'LOGIN_FAILED' : return {
             ...state,
@@ -18,7 +19,8 @@ export const loginReducer = (state={}, action) => {
         }
         case 'LOGOUT_SUCCESS' : return {
             ...state,
-            login: false
+            login: false,
+            userId: undefined
         }
         default: return state
     }

@@ -1,24 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import convertRupiah from "rupiah-format";
 import jwt_decode from "jwt-decode";
+import { updateFund } from "../action/fundAction";
 
 export default function DetailsDonate(props) {
   const { data } = props;
-
-
-  // const setExpiredDateState = useSelector(state=>state.setExpiredDateReducer);
-  // let expiredDateObject = {}
-  // if(!detailPage){
-  //   expiredDateObject = setExpiredDateState?.find(item => item.fundId === data[0]?.id)
-  // }
-  // let expiredDate = 0
-  // if(expiredDateObject){
-  //   expiredDate = parseInt(expiredDateObject.expiredDate)
-  // }
-  
 
   const history = useHistory();
 
@@ -50,16 +39,14 @@ export default function DetailsDonate(props) {
     }
   };
 
-  // const handelExpiredDate = (event) => {
-  //   if(event.key === "Enter") {
-  //     //setExpiredDate(event.target.value)
-  //     dispatch(setExpiredDateAction(event.target.value,data[0].id))
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   expiredDate > 0 && setTimeout(()=> expiredDate-1, 1000 * 60 * 60 * 24)
-  // }, [expiredDate])
+  useEffect(() => {
+    data[0]?.expiredDate > 0 &&
+      setTimeout(
+        () => dispatch(updateFund(data[0]?.id, data[0]?.expiredDate - 1)),
+        1000 * 60 * 60 * 24
+      );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data[0]?.expiredDate]);
 
   return (
     <div>
@@ -94,17 +81,21 @@ export default function DetailsDonate(props) {
               <strong>{donationHasBeenApproved?.length}</strong> Donation
             </p>
             <p className="expired-date">
-              <strong>150</strong>More Day
+              <strong>{data[0]?.expiredDate}</strong>More Day
             </p>
           </div>
           <p className="description">{data[0]?.description}</p>
           <button
-            onClick={() => {
-               dispatch({ type: "OPEN_MODAL" });
-            }}
-            className="btn-donate"
+            onClick={
+              data[0]?.expiredDate === 0 || data[0]?.goal === gathered1
+                ? null
+                : () => {
+                    dispatch({ type: "OPEN_MODAL" });
+                  }
+            }
+            className={data[0]?.expiredDate === 0 || data[0]?.goal === gathered1 ? "btn-donate btn-not-allowed" : "btn-donate"}
           >
-            Donate
+            {data[0]?.expiredDate === 0 || data[0]?.goal === gathered1 ? "Finish" : "Donate" }
           </button>
           <button onClick={showChatPage}>Chat Admin</button>
         </div>
