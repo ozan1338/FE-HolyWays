@@ -6,6 +6,7 @@ import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 import MessageChat from "../components/MessageChat";
 import jwt_decode from "jwt-decode";
+import { Helmet } from "react-helmet-async";
 
 let socket;
 
@@ -33,6 +34,7 @@ export default function ChatAdmin() {
     socket.on("new-message", () => {
       console.log("contact", contact);
       socket.emit("load-message", contact?.id);
+      loadMessage();
     });
 
     loadContacts();
@@ -71,13 +73,15 @@ export default function ChatAdmin() {
 
   const onClickContact = (data) => {
     setContact(data);
-    console.log(data);
+    //console.log(data);
+    console.log(data.id);
     socket.emit("load-message", data.id);
+    
   };
 
   const loadMessage = () => {
     //define event listener for "message"
-    socket.on("messages", (data) => {
+    socket.on("messages", async(data) => {
       //get data messages
       if (data.length > 0) {
         //console.log(data);
@@ -103,16 +107,23 @@ export default function ChatAdmin() {
         message: event.target.value,
       };
 
-      console.log(data);
+      //console.log(data);
 
       //emit event send message
       socket.emit("send-message", data);
       event.target.value = "";
+      //socket.emit("load-message", contact.id);
+      
     }
   };
 
+  //console.log(contact,id);
+
   return (
     <>
+      <Helmet>
+        <title>HOLYWAYS || MESSAGE</title>
+      </Helmet>    
       <Navbar chatPage={true} />
       <div className="chat-page">
         <div className="chat-contact">

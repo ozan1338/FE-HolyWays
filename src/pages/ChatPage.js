@@ -6,6 +6,7 @@ import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 import MessageChat from "../components/MessageChat";
 import jwt_decode from "jwt-decode";
+import { Helmet } from "react-helmet-async";
 
 let socket;
 
@@ -14,11 +15,17 @@ export default function ChatPage() {
   const [contacts, setContacts] = useState([]);
 
   const [message, setMessage] = useState([]);
+  //console.log(message)
+
+  console.log(message.length);
 
   const { id, adminId } = useParams();
 
   const token = JSON.parse(localStorage.getItem("currentUser"));
   const decodedToken = jwt_decode(token);
+  //console.log(contact?.id);
+
+  //console.log(adminId);
 
   useEffect(() => {
     socket = io("http://localhost:5000", {
@@ -30,15 +37,19 @@ export default function ChatPage() {
       },
     });
 
+    //console.log(contact);
     socket.on("new-message", () => {
       //console.log("contact", contact);
-      socket.emit("load-message", contact?.id);
+      //console.error("babai")
+      socket.emit("load-message", adminId);
+      //console.error(adminId)
+      loadMessage();
     });
 
-    //onClickContact();
 
     loadContacts();
     loadMessage();
+    console.log("halo");
 
     return () => {
       socket.disconnect();
@@ -50,17 +61,15 @@ export default function ChatPage() {
     socket.emit("load-admin-contact", parseInt(adminId));
     let dataContact
     socket.on("admin-contact", (data) => {
-      console.log(data);
-      const lastChatWithAdmin = data[0].senderMessage.filter(item => item.idRecepient === parseInt(id))
-      console.log(lastChatWithAdmin);
+      //console.log(data);
+      //const lastChatWithAdmin = data[0].senderMessage.filter(item => item.idRecepient === parseInt(id))
+      //console.log(lastChatWithAdmin);
       dataContact = data.map((item) => ({
         ...item,
         message: item.senderMessage.length > 0
         ? item.senderMessage[item.senderMessage.length - 1]?.message
         : "Click here to start message",
       }));
-
-      
 
       setContacts(dataContact);
     });
@@ -70,11 +79,14 @@ export default function ChatPage() {
     setContact(data);
     //console.log(data);
     socket.emit("load-message", data.id);
+    //console.log(data.id);
+    //loadMessage()
   };
 
-  const loadMessage = () => {
+  const loadMessage = (value) => {
     //define event listener for "message"
     socket.on("messages", (data) => {
+      //console.log(data.length);
       //get data messages
       if (data.length > 0) {
         const dataMessages = data.map((item) => ({
@@ -84,7 +96,17 @@ export default function ChatPage() {
         }));
         //console.log(dataMessages);
         setMessage(dataMessages);
+        //loadContacts();
       }
+      // else if(data.length === 0){
+      //   const dataMessages = [{
+      //     idSender: adminId,
+      //     message: value,
+      //     createdAt: new Date()
+      //   }]
+      //   setMessage(dataMessages)
+      //   loadContacts();
+      // }
       loadContacts();
       const chatMessageElm = document.querySelector(".chat-message-container");
       chatMessageElm.scrollTop = chatMessageElm?.scrollHeight;
@@ -94,20 +116,23 @@ export default function ChatPage() {
   const onSendMessage = (event) => {
     //listen only enter key press
     if (event.key === "Enter") {
+      console.log(contact.id);
       const data = {
         idRecepient: contact.id,
         message: event.target.value,
       };
 
-      //console.log(data);
-
       socket.emit("send-message", data);
       event.target.value = "";
+      
     }
   };
 
   return (
     <>
+      <Helmet>
+      <title>HOLYWAYS || CHAT ADMIN</title>
+      </Helmet>
       <Navbar />
       <div className="chat-page">
         <div className="chat-contact">

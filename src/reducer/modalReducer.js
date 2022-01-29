@@ -23,6 +23,8 @@ export const modalReducer = (state={} , action) => {
             openModal : false,
             openApproveModal: false,
             openEditProfile: false,
+            openAlertSuccess : false,
+            openAlertError : false
         }
         case 'OPEN_MODAL' : return {
             ...state,

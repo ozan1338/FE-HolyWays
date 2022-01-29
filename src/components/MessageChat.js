@@ -13,13 +13,19 @@ export default function MessageChat({ contact, user, messages }) {
   const userState = useSelector((state) => state.getUserByIdReducer);
   const profile = userState.user;
 
+  console.log("contact id: ", contact?.id)
+  console.log("message id sender: ", messages[0]?.idSender)
+  console.log("idSender: ", idSender? idSender[0]?.idSender : "hai")
+  console.log("user id", user.id)
+
   return (
     <>
       {contact
         ? messages.map((item, index) => {
             if (
               contact.id === item.idSender ||
-              item.idSender === idSender[0]?.idSender
+              item.idSender === idSender[0]?.idSender ||
+              item.idSender === user.id
             ) {
               return (
                 <div key={index}>
