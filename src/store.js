@@ -1,6 +1,6 @@
 import { modalReducer } from "./reducer/modalReducer";
 import { loginReducer, registerUserReducer, getUserByIdReducer, addProfileReducer, updateUserReducer, updateProfileReducer } from "./reducer/userReducer";
-import { getAllFundReducer, getFundByIdReducer, addFundReducer, updateFundReducer } from "./reducer/fundReducer";
+import { getAllFundReducer, getFundByIdReducer, addFundReducer, updateFundReducer, deleteFundReducer } from "./reducer/fundReducer";
 import { addTransactionReducer, updateTransactionReducer } from "./reducer/transactionReducer";
 import { notifReducer } from "./reducer/notifReducer";
 import thunk from "redux-thunk";
@@ -21,7 +21,8 @@ const finalReducer = combineReducers({
     updateUserReducer,
     updateProfileReducer,
     notifReducer,
-    updateFundReducer
+    updateFundReducer,
+    deleteFundReducer
 });
 
 

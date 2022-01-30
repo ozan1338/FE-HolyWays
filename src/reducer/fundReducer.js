@@ -63,3 +63,19 @@ export const updateFundReducer = (state = {}, action) => {
         default : return state;
     }
 }
+
+export const deleteFundReducer = (state= {}, action) => {
+    switch(action.type){
+        case 'DELETE_FUND_REQUEST' : return {
+            loading: true,
+        }
+        case 'DELETE_FUND_SUCCESS' : return {
+            loading: false,
+        }
+        case 'DELETE_FUND_FAILED' : return {
+            loading: false,
+            error: action.payload
+        }
+        default : return state
+    }
+}

@@ -71,3 +71,16 @@ export const updateFund = (fundId,expiredDate) => async(dispatch) => {
         //dispatch({type: "ADD_FUND_FAILED", payload: err.response?.data.error.message})
     }
 }
+
+export const deleteFund = (fundId) => async(dispatch) => {
+    dispatch({type: "DELETE_FUND_REQUEST"})
+    try {
+        
+        await API.delete(`/fund/${fundId}`)
+        dispatch({type: "DELETE_FUND_SUCCESS"})
+        window.location.href = "/"
+    } catch (error) {
+        dispatch({type: "DELETE_FUND_FAILED", payload: error.response})
+        
+    }
+}

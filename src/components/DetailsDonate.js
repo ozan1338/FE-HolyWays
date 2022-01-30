@@ -7,7 +7,8 @@ import jwt_decode from "jwt-decode";
 import { updateFund } from "../action/fundAction";
 
 export default function DetailsDonate(props) {
-  const { data } = props;
+  const { data, viewFund } = props;
+
 
   const history = useHistory();
 
@@ -97,7 +98,7 @@ export default function DetailsDonate(props) {
           >
             {data[0]?.expiredDate === 0 || data[0]?.goal === gathered1 ? "Finish" : "Donate" }
           </button>
-          <button onClick={showChatPage}>Chat Admin</button>
+          <button onClick={()=>{viewFund ? dispatch({type: "OPEN_DELETE_MODAL"}) : showChatPage()}}>{viewFund ? "Delete Fund" : "Chat Admin"}</button>
         </div>
       </div>
       <div className="details-page-donation">

@@ -10,11 +10,13 @@ import { useParams } from "react-router-dom";
 import { getFundById } from "../action/fundAction";
 //import DonationData from "../DonationData"
 import Loading from "../components/Loading";
+import DeleteModal from "../components/DeleteModal";
 
 export default function ViewFund() {
   const openState = useSelector((state) => state.modalReducer);
-  const { openApproveModal, data } = openState;
+  const { openApproveModal, data, openDeleteModal } = openState;
   const { openModal } = openState;
+
 
   const fundState = useSelector((state) => state.getFundByIdReducer);
   const { fund, loading } = fundState;
@@ -48,11 +50,12 @@ export default function ViewFund() {
         <Navbar />
         {openApproveModal ? <ApproveModal data={data} /> : null}
         {openModal ? <Modal fundId={id} /> : null}
+        {openDeleteModal ? <DeleteModal fundId={id} /> : null}
         {loading ? (
           <Loading />
         ) : (
           <>
-            <DetailsDonate data={fund} dayLeft="150" />
+            <DetailsDonate viewFund={true} data={fund} dayLeft="150" />
             <div className="details-page">
               <div className="details-page-donation-list">
                 <div className="row row-donation">
