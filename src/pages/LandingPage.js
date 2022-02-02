@@ -19,6 +19,8 @@ export default function LandingPage() {
   const fundState = useSelector((state) => state.getAllFundReducer);
   const { loading, funds } = fundState;
 
+  console.log(funds);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getAllFund());

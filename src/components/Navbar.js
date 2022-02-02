@@ -39,7 +39,7 @@ export default function Navbar({chatPage}) {
     window.scrollTo(0, 0);
 
     if(login){
-      socket = io("http://localhost:5000", {
+      socket = io(process.env.REACT_APP_SERVER_URL || "https://holy-ways-ozan.herokuapp.com/api/v1" ||"http://localhost:5000", {
         auth: {
           token: JSON.parse(localStorage.getItem("currentUser")),
         },
