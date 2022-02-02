@@ -49,7 +49,7 @@ export default function ChatPage() {
 
     loadContacts();
     loadMessage();
-    console.log("halo");
+    //console.log("halo");
 
     return () => {
       socket.disconnect();

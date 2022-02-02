@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const token = JSON.parse(localStorage.getItem("currentUser"))
-console.log(token);
+//console.log(token);
 
 export const API = axios.create({
-    baseURL: "http://localhost:5000/api/v1",
+    baseURL: process.env.REACT_APP_SERVER_URL || "https://holy-ways-ozan.herokuapp.com/api/v1"||"http://localhost:5000/api/v1",
     headers: {
         Authorization: `Bearer ${token}`
     }

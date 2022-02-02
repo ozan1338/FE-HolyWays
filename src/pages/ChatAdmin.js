@@ -74,7 +74,7 @@ export default function ChatAdmin() {
   const onClickContact = (data) => {
     setContact(data);
     //console.log(data);
-    console.log(data.id);
+    //console.log(data.id);
     socket.emit("load-message", data.id);
     
   };
