@@ -96,7 +96,7 @@ export default function LandingPage() {
             {loading ? (
               <Loading />
             ) : (
-              funds.map((item, index) => {
+              funds?.map((item, index) => {
                 return (
                   <CardList
                     key={index}
