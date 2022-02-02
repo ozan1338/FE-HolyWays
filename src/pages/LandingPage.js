@@ -96,6 +96,7 @@ export default function LandingPage() {
             {loading ? (
               <Loading />
             ) : (
+              funds.length === 0 ? null :
               funds?.map((item, index) => {
                 return (
                   <CardList
