@@ -5,7 +5,7 @@ import AlertError from "./AlertError";
 import AlertSuccess from "./AlertSuccess";
 import Loading from "./Loading"
 
-export default function Modal({fundId}) {
+export default function Modal({fundId,viewFund}) {
   const dispatch = useDispatch();
   
   const transactionState = useSelector(state=>state.addTransactionReducer)
@@ -37,13 +37,13 @@ export default function Modal({fundId}) {
     event.preventDefault();
 
     if(!form.proofAttachment){
-      dispatch(addTransaction(fundId,form.donateAmount))
+      dispatch(addTransaction(fundId,form.donateAmount,viewFund))
     }else{
       const formData = new FormData()
       formData.set('donateAmount', form.donateAmount)
       formData.set('proofAttachment', form.proofAttachment[0], form.proofAttachment[0].name);
 
-      dispatch(addTransaction(fundId,formData));
+      dispatch(addTransaction(fundId,formData,viewFund));
     }
 
   }
