@@ -37,7 +37,7 @@ export default function MessageChat({ contact, user, messages }) {
                     <LazyLoadImage
                       src={
                         item.idSender === user.id
-                          ? profile[0].photoProfile
+                          ? profile[0].photoProfile ? profile[0].photoProfile : process.env.PUBLIC_URL + "/assets/images/img_avatar.png"
                           : contact.photoProfile
                       }
                       alt="Avatar"
