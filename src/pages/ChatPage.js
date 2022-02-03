@@ -29,10 +29,8 @@ export default function ChatPage() {
 
   useEffect(() => {
     socket = io("https://holy-ways-ozan.herokuapp.com" || process.env.REACT_APP_SERVER_URL ||"http://localhost:5000",{
+      transports: ['websocket', 'polling', 'flashsocket'],
       withCredentials: true,
-    }, {
-      transports: ['polling']
-    },{
       auth: {
         token: JSON.parse(localStorage.getItem("currentUser")),
       },
