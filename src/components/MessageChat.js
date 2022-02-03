@@ -13,10 +13,10 @@ export default function MessageChat({ contact, user, messages }) {
   const userState = useSelector((state) => state.getUserByIdReducer);
   const profile = userState.user;
 
-  console.log("contact id: ", contact?.id)
-  console.log("message id sender: ", messages[0]?.idSender)
-  console.log("idSender: ", idSender? idSender[0]?.idSender : "hai")
-  console.log("user id", user.id)
+  //console.log("contact id: ", contact?.id)
+  //console.log("message id sender: ", messages[0]?.idSender)
+  //console.log("idSender: ", idSender? idSender[0]?.idSender : "hai")
+  //console.log("user id", user.id)
 
   return (
     <>
@@ -37,8 +37,8 @@ export default function MessageChat({ contact, user, messages }) {
                     <LazyLoadImage
                       src={
                         item.idSender === user.id
-                          ? profile[0].profile.photoProfile
-                          : contact.profile.photoProfile
+                          ? profile[0].photoProfile
+                          : contact.photoProfile
                       }
                       alt="Avatar"
                     />

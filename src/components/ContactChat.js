@@ -50,8 +50,8 @@ export default function ContactChat({ dataContact, clickContact, contact }) {
               >
                 <LazyLoadImage
                   src={
-                    item.profile
-                      ? item.profile.photoProfile
+                    item.photoProfile
+                      ? item.photoProfile
                       : process.env.PUBLIC_URL + "/assets/images/img_avatar.png"
                   }
                 />

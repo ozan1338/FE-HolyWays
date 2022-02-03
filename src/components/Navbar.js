@@ -39,7 +39,7 @@ export default function Navbar({chatPage}) {
     window.scrollTo(0, 0);
 
     if(login){
-      socket = io(process.env.REACT_APP_SERVER_URL || "https://holy-ways-ozan.herokuapp.com/api/v1" ||"http://localhost:5000", {
+      socket = io("https://holy-ways-ozan.herokuapp.com" ||"http://localhost:5000", {
         auth: {
           token: JSON.parse(localStorage.getItem("currentUser")),
         },
@@ -77,8 +77,8 @@ export default function Navbar({chatPage}) {
             <div className="profile">
               <LazyLoadImage
                 src={
-                  user[0]?.profile
-                    ? user[0]?.profile.photoProfile
+                  user[0]?.photoProfile
+                    ? user[0]?.photoProfile
                     : process.env.PUBLIC_URL + "/assets/images/img_avatar.png"
                 }
                 onClick={() => {

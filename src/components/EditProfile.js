@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import { updateProfile, updateUser } from "../action/userActions";
+import { updateUser } from "../action/userActions";
 import { useSelector, useDispatch } from "react-redux";
 import AlertError from "./AlertError";
 import AlertSuccess from "./AlertSuccess";
 import Loading from "./Loading";
 
 export default function EditProfile(props) {
-  const { nameUser, emailUser, userId, phoneNumber, profileId } = props;
+  const { nameUser, emailUser, userId, phoneNumber } = props;
 
   const phoneNumberUser = phoneNumber ? phoneNumber : ""
 
-  console.log(userId);
+  //console.log(userId);
   const dispatch = useDispatch();
   const state = useSelector((state) => state.updateUserReducer);
   const { loading, error } = state;
 
-  const [email, setEmail] = useState(emailUser);
-  const [name, setName] = useState(nameUser);
+  const [email] = useState(emailUser);
+  const [name] = useState(nameUser);
 
   const [form, setForm] = useState({
     phoneNumber: phoneNumberUser,
@@ -41,16 +41,22 @@ export default function EditProfile(props) {
     event.preventDefault();
 
     if (!form.photoProfile) {
-      const user = {
-        email,
-        name,
-      };
+      // const user = {
+      //   email,
+      //   name,
+      // };
+      const formData = new FormData();
+      formData.set("email", form.email)
+      formData.set("name", form.name)
+      formData.set("phoneNumber", form.phoneNumber);
 
-      dispatch(updateUser(userId, user));
+      dispatch(updateUser(userId, formData));
 
-      dispatch(updateProfile(profileId, form.phoneNumber));
+      //dispatch(updateProfile(profileId, form.phoneNumber));
     } else {
       const formData = new FormData();
+      formData.set("email", form.email)
+      formData.set("name", form.name)
       formData.set("phoneNumber", form.phoneNumber);
       formData.set(
         "photoProfile",
@@ -58,13 +64,13 @@ export default function EditProfile(props) {
         form.photoProfile[0].name
       );
 
-      const user = {
-        email,
-        name,
-      };
+      // const user = {
+      //   email,
+      //   name,
+      // };
 
-      dispatch(updateUser(userId, user));
-      dispatch(updateProfile(profileId, formData));
+      dispatch(updateUser(userId, formData));
+      //dispatch(updateProfile(profileId, formData));
     }
   };
 
@@ -81,15 +87,17 @@ export default function EditProfile(props) {
             <input
               type="text"
               value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={handleChange}
               placeholder="Email"
+              name="email"
               required
             />
             <input
               type="text"
               value={name}
-              onChange={(event) => setName(event.target.value)}
+              onChange={handleChange}
               placeholder="Name"
+              name="name"
               required
             />
             <input

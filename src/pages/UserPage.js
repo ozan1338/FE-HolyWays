@@ -39,10 +39,9 @@ export default function UserPage() {
         {openEditProfile ? (
           <EditProfile
             userId={id}
-            profileId={user[0]?.profile?.id}
             nameUser={user[0]?.name}
             emailUser={user[0]?.email}
-            phoneNumber={user[0]?.profile?.phoneNumber}
+            phoneNumber={user[0]?.phoneNumber}
           />
         ) : null}
         {loading ? (
@@ -62,8 +61,8 @@ export default function UserPage() {
               <div className="user-page-profile-body">
                 <LazyLoadImage
                   src={
-                    user[0]?.profile
-                      ? user[0]?.profile.photoProfile
+                    user[0]?.photoProfile
+                      ? user[0]?.photoProfile
                       : process.env.PUBLIC_URL + "/assets/images/img_avatar.png"
                   }
                 />
@@ -81,7 +80,7 @@ export default function UserPage() {
                     <h4>
                       +62
                       {user[0]?.profile
-                        ? user[0]?.profile.phoneNumber
+                        ? user[0]?.phoneNumber
                         : "xxxxxxxxxx"}
                     </h4>
                   </div>
