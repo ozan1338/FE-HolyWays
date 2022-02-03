@@ -16,7 +16,7 @@ export const addTransaction = (fundId, transaction) => async(dispatch) => {
         setTimeout(()=>{
             dispatch({type: 'ADD_TRANSACTION_SUCCESS'})
             dispatch({type: 'CLOSE_MODAL'})
-            window.location.reload();
+            window.location.href = `/details/${fundId}`;
             dispatch({type: 'ClOSE_ALERT_SUCCESS'})
 
         }, 700)
@@ -41,7 +41,8 @@ export const updateTransaction = (fundId,userId,id) => async(dispatch) => {
         await API.patch(`fund/${fundId}/${userId}/${id}`, {"status":"success"}, config)
         dispatch({type: 'UPDATE_TRANSACTION_SUCCESS'})
         dispatch({type: 'CLOSE_MODAL'})
-        window.location.reload()
+        //window.location.reload()
+        window.location.href = `/details/${fundId}`;
 
     } catch (err) {
         dispatch({type: 'UPDATE_TRANSACTION_FAILED', payload: err.response.data.error.message})

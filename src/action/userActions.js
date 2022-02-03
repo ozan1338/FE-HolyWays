@@ -132,7 +132,8 @@ export const updateUser = (userId,data) => async(dispatch) => {
         setTimeout(()=>{
             dispatch({type: 'UPDATE_USER_SUCCESS'})
             dispatch({type: 'CLOSE_MODAL'})
-            window.location.reload();
+            //window.location.reload();
+            window.location.href = `/user/${userId}`
             dispatch({type: 'ClOSE_ALERT_SUCCESS'})
 
         }, 700)

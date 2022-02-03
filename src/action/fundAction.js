@@ -65,7 +65,7 @@ export const updateFund = (fundId,expiredDate) => async(dispatch) => {
         console.log(fundId, expiredDate);
         await API.patch(`/fund/${fundId}`, {"expiredDate":String(expiredDate)}, config)
         dispatch({type: "UPDATE_EXPIRED_DATE_SUCCESS"})
-        window.location.reload()
+        window.location.href = '/'
     } catch (err) {
         dispatch({type: "UPDATE_EXPIRED_DATE_SUCCESS", payload: err.response?.data})
         //dispatch({type: "ADD_FUND_FAILED", payload: err.response?.data.error.message})
