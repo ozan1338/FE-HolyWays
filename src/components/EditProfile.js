@@ -8,7 +8,8 @@ import Loading from "./Loading";
 export default function EditProfile(props) {
   const { nameUser, emailUser, userId, phoneNumber } = props;
 
-  const phoneNumberUser = phoneNumber !== 0 ? phoneNumber : ""
+  // eslint-disable-next-line eqeqeq
+  const phoneNumberUser = phoneNumber != 0 ? phoneNumber : ""
 
   //console.log(userId);
   const dispatch = useDispatch();
