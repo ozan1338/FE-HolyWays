@@ -8,17 +8,19 @@ import Loading from "./Loading";
 export default function EditProfile(props) {
   const { nameUser, emailUser, userId, phoneNumber } = props;
 
-  const phoneNumberUser = phoneNumber ? phoneNumber : ""
+  const phoneNumberUser = phoneNumber !== 0 ? phoneNumber : ""
 
   //console.log(userId);
   const dispatch = useDispatch();
   const state = useSelector((state) => state.updateUserReducer);
   const { loading, error } = state;
 
-  const [email] = useState(emailUser);
-  const [name] = useState(nameUser);
+  //const [email] = useState(emailUser);
+  //const [name] = useState(nameUser);
 
   const [form, setForm] = useState({
+    name: nameUser,
+    email: emailUser,
     phoneNumber: phoneNumberUser,
     photoProfile: null,
   });
@@ -63,12 +65,6 @@ export default function EditProfile(props) {
         form.photoProfile[0],
         form.photoProfile[0].name
       );
-
-      // const user = {
-      //   email,
-      //   name,
-      // };
-
       dispatch(updateUser(userId, formData));
       //dispatch(updateProfile(profileId, formData));
     }
@@ -86,7 +82,7 @@ export default function EditProfile(props) {
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              value={email}
+              value={form.email}
               onChange={handleChange}
               placeholder="Email"
               name="email"
@@ -94,7 +90,7 @@ export default function EditProfile(props) {
             />
             <input
               type="text"
-              value={name}
+              value={form.name}
               onChange={handleChange}
               placeholder="Name"
               name="name"

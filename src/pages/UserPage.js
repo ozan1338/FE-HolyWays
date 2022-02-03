@@ -79,7 +79,7 @@ export default function UserPage() {
                     <h3>Phone</h3>
                     <h4>
                       +62
-                      {user[0]?.profile
+                      {user[0]?.phoneNumber !== 0
                         ? user[0]?.phoneNumber
                         : "xxxxxxxxxx"}
                     </h4>
