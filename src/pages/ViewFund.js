@@ -14,7 +14,7 @@ import DeleteModal from "../components/DeleteModal";
 
 export default function ViewFund() {
   const openState = useSelector((state) => state.modalReducer);
-  const { openApproveModal, data, openDeleteModal, viewFund } = openState;
+  const { openApproveModal, data, openDeleteModal } = openState;
   const { openModal } = openState;
 
 
@@ -49,7 +49,7 @@ export default function ViewFund() {
       <div>
         <Navbar />
         {openApproveModal ? <ApproveModal data={data} /> : null}
-        {openModal ? <Modal viewFund={viewFund} fundId={id} /> : null}
+        {openModal ? <Modal fundId={id} /> : null}
         {openDeleteModal ? <DeleteModal fundId={id} /> : null}
         {loading ? (
           <Loading />

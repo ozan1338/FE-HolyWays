@@ -1,13 +1,13 @@
 import { API } from "../config/api";
 
-export const addTransaction = (fundId, transaction, viewFund) => async(dispatch) => {
+export const addTransaction = (fundId, transaction) => async(dispatch) => {
     dispatch({type: 'ADD_TRANSACTION_REQUEST'});
-    let url
-    if(viewFund){
-        url = `/view-fund/${fundId}`
-    }else{
-        url = `/details/${fundId}`
-    }
+    // let url
+    // if(viewFund){
+    //     url = `/view-fund/${fundId}`
+    // }else{
+    //     url = `/details/${fundId}`
+    // }
 
     try {
 
@@ -22,7 +22,7 @@ export const addTransaction = (fundId, transaction, viewFund) => async(dispatch)
         setTimeout(()=>{
             dispatch({type: 'ADD_TRANSACTION_SUCCESS'})
             dispatch({type: 'CLOSE_MODAL'})
-            window.location.href = url;
+            window.location.href = "/";
             dispatch({type: 'ClOSE_ALERT_SUCCESS'})
 
         }, 700)
@@ -48,7 +48,7 @@ export const updateTransaction = (fundId,userId,id) => async(dispatch) => {
         dispatch({type: 'UPDATE_TRANSACTION_SUCCESS'})
         dispatch({type: 'CLOSE_MODAL'})
         //window.location.reload()
-        window.location.href = `/view-fund/${fundId}`;
+        window.location.href = `/`;
 
     } catch (err) {
         dispatch({type: 'UPDATE_TRANSACTION_FAILED', payload: err.response.data.error.message})

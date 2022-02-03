@@ -28,7 +28,6 @@ export const modalReducer = (state={} , action) => {
             openAlertSuccess : false,
             openAlertError : false,
             openDeleteModal: false,
-            viewFund: false
         }
         case 'OPEN_MODAL' : return {
             ...state,
@@ -38,7 +37,6 @@ export const modalReducer = (state={} , action) => {
             openApproveModal: false,
             openEditProfile: false,
             openDeleteModal: false,
-            viewFund: action.payload
         }
         case 'OPEN_APPROVE_MODAL' : return {
             ...state,

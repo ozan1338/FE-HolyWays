@@ -91,7 +91,7 @@ export default function DetailsDonate(props) {
               data[0]?.expiredDate === 0 || data[0]?.goal === gathered1
                 ? null
                 : () => {
-                    dispatch({ type: "OPEN_MODAL",payload: viewFund });
+                    dispatch({ type: "OPEN_MODAL"});
                   }
             }
             className={data[0]?.expiredDate === 0 || data[0]?.goal === gathered1 ? "btn-donate btn-not-allowed" : "btn-donate"}
