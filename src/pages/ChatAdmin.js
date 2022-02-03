@@ -22,9 +22,9 @@ export default function ChatAdmin() {
   const decodedToken = jwt_decode(token);
 
   useEffect(() => {
-    socket = io("https://holy-ways-ozan.herokuapp.com" ||"http://localhost:5000", {
-      transports: ['websocket', 'polling', 'flashsocket']
-    } ,{
+    socket = io("https://holy-ways-ozan.herokuapp.com" ||"http://localhost:5000",{
+      transports: ['websocket', 'polling', 'flashsocket'],
+      withCredentials: true,
       auth: {
         token: JSON.parse(localStorage.getItem("currentUser")),
       },

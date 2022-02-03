@@ -40,8 +40,8 @@ export default function Navbar({chatPage}) {
 
     if(login){
       socket = io("https://holy-ways-ozan.herokuapp.com" ||"http://localhost:5000",{
-        transports: ['websocket', 'polling', 'flashsocket']
-      }, {
+        transports: ['websocket', 'polling', 'flashsocket'],
+        withCredentials: true,
         auth: {
           token: JSON.parse(localStorage.getItem("currentUser")),
         },
